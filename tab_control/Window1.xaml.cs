@@ -41,31 +41,14 @@ namespace tab_control
             //Ce membre est pour l'instant créer artificiellement pour simuler un membre provenant de la BDD
             Membre realMembre = new Membre("a", "a");
             */
-                Admin main = new Admin();
-                main.Show();
+                
             
             
-            Bdd bdd = Bdd.getInstance();
-            UserDao uD = new UserDao(bdd);
-
-            //Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
-            //uD.add(m);
-
-            List<Membre> membres = uD.findAll();
-            List<Membre> parents = new List<Membre>(), babysitters = new List<Membre>(), intermediaire = new List<Membre>();
-
-            foreach (Membre me in membres)
-            {
-                switch (me.Type)
-                {
-                    case 1:
-                        parents.Add(me);
-                        break;
-                }
-            }
-            //Console.WriteLine(membres[0].NbEnfants + ", " +  membres[0].Nom);
             
-            main.ParentsBDD.ItemsSource = parents;
+            Admin main = new Admin();
+            main.Show();
+            this.Close();
+            
         }
     }
 }

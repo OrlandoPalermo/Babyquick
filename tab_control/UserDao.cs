@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.ComponentModel;
 
 namespace tab_control
 {
-    class UserDao
+    class UserDao : INotifyPropertyChanged
     {
         private Bdd bdd;
 
@@ -62,6 +63,26 @@ namespace tab_control
             }
             bdd.getConnection().Close();
             return membres;
+        }
+
+        public void delete(Membre m)
+        {
+            bdd.getConnection().Open();
+            string requete = "DELETE FROM Membre WHERE email = @mail";
+
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+            command.Parameters.Add("@mail", SqlDbType.VarChar).Value = m.Email;
+            command.ExecuteNonQuery();
+            bdd.getConnection().Close();
+            this.RaisePropertyChanged("Name");
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged(String propName)
+        {
+            if (PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }

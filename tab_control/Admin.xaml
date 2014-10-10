@@ -28,7 +28,7 @@
         <TabItem Header="Gérer utilisateurs" Width="600">
             <StackPanel>
                 <WrapPanel HorizontalAlignment="Center" Margin="0, 10, 0, 10">
-                    <Button Content="Supprimer" Padding="10" Background="Tomato" Foreground="White"></Button>
+                    <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Click="SuprimerMembre_Click"></Button>
                 </WrapPanel>
                 <TabControl Width="900">
                     <TabControl.Resources>
@@ -38,7 +38,7 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem Header="Parents" Width="294">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0" Name="ParentsBDD" AutoGenerateColumns="False">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0" Name="ParentsBDD" AutoGenerateColumns="False" SelectionChanged="SelectionItem_Click">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
@@ -46,7 +46,7 @@
                                 <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Nb. enfants" Binding="{Binding NbEnfants}"></DataGridTextColumn>
                             </DataGrid.Columns>
-                         
+                            
                         </DataGrid>
                     </TabItem>
                     <TabItem Header="Babysitter" Width="294">
