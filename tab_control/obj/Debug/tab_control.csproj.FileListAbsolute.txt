@@ -1,0 +1,46 @@
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\bin\Debug\tab_control.exe.config
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\bin\Debug\tab_control.exe
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\bin\Debug\tab_control.pdb
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\MainWindow.baml
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\MainWindow.g.cs
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\App.g.cs
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control_MarkupCompile.cache
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.g.resources
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.Properties.Resources.resources
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.exe
+e:\orlando\mes documents\visual studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control.pdb
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\UserControl1.baml
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\UserControl1.g.cs
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\tab_control_MarkupCompile.lref
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Window1.baml
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Window1.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\bin\Debug\tab_control.exe.config
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.exe
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.pdb
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\bin\Debug\tab_control.exe
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\bin\Debug\tab_control.pdb
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\UserControl1.baml
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\Window1.baml
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\MainWindow.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\UserControl1.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\Window1.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\App.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control_MarkupCompile.cache
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control_MarkupCompile.lref
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\MainWindow.baml
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.g.resources
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.Properties.Resources.resources
+D:\Users\Alexandre\Desktop\BabyQuick\tab_control\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Mail.baml
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Mail.g.cs
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Admin.baml
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\obj\Debug\Admin.g.cs
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\bin\Debug\EntityFramework.dll
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\bin\Debug\EntityFramework.SqlServer.dll
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\bin\Debug\EntityFramework.xml
+E:\Orlando\Mes documents\Visual Studio 2013\Projects\tab_control\tab_control\bin\Debug\EntityFramework.SqlServer.xml

@@ -1,0 +1,85 @@
+﻿<Window x:Class="tab_control.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:userControl="clr-namespace:tab_control"
+        Title="Admin" Height="750" Width="1000">
+    <TabControl Margin="-2">
+        <TabControl.Resources>
+            <Style TargetType="TabItem">
+                <Setter Property="BorderThickness" Value="1"></Setter>
+                <Setter Property="BorderBrush" Value="Black"></Setter>
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FF250A0A" Offset="0"/>
+                            <GradientStop Color="#FF363232" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Padding" Value="20"></Setter>
+                <Style.Triggers>
+                    <Trigger Property="TabItem.IsSelected" Value="True">
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </TabControl.Resources>
+        <TabItem Header="Gérer utilisateurs" Width="600">
+            <StackPanel>
+                <WrapPanel HorizontalAlignment="Center" Margin="0, 10, 0, 10">
+                    <Button Content="Supprimer" Padding="10" Background="Tomato" Foreground="White"></Button>
+                </WrapPanel>
+                <TabControl Width="900">
+                    <TabControl.Resources>
+                        <Style TargetType="TabItem">
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            
+                        </Style>
+                    </TabControl.Resources>
+                    <TabItem Header="Parents" Width="294">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0" Name="ParentsBDD" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Mail" Binding="{Binding Email}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Nb. enfants" Binding="{Binding NbEnfants}"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                         
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Babysitter" Width="294">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nom"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Prenom"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Mail"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Gsm"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Date dispo"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Actif ?"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Intermédiaire" Width="300">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Nom"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Prenom"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Mail"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Gsm"></DataGridTextColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                </TabControl>
+                
+            </StackPanel>
+        </TabItem>
+        <TabItem Header="Mail" Width="200">
+            <userControl:Mail></userControl:Mail>
+        </TabItem>
+        <TabItem Header="Bonjour Admin !" Width="184">
+            <userControl:UserControl1></userControl:UserControl1>
+        </TabItem>
+    </TabControl>
+</Window>
