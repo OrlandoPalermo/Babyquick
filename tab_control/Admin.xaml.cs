@@ -32,7 +32,7 @@ namespace tab_control
             uD.add(m);
 
             List<Membre> membres = uD.findAll();
-            //et ma soeur aussi 
+            
             parents       = new ObservableCollection<Membre>();
             babysitters   = new ObservableCollection<Membre>();
             intermediaire = new ObservableCollection<Membre>();
@@ -67,10 +67,30 @@ namespace tab_control
             }
         }
 
+
         private void SelectionItem_Click(object sender, RoutedEventArgs e)
         {
             m = ((Membre)ParentsBDD.SelectedItem);
+            
         }
+
+        private void ParentsBDD_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            
+            if (m != null)
+            {
+                Bdd bdd = Bdd.getInstance();
+                UserDao userDao = new UserDao(bdd);
+                userDao.update(m);
+            }
+            else
+            {
+                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+            }
+
+        }
+
+       
 
     }
 }

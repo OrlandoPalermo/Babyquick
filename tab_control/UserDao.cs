@@ -77,6 +77,32 @@ namespace tab_control
             this.RaisePropertyChanged("Name");
         }
 
+        /*Permet de modifier les tuples dans la table.*/
+        public void update(Membre m)
+        {
+            bdd.getConnection().Open();
+
+            string requete = "UPDATE Membre "
+            +"SET Nom=@nom, Prenom=@prenom, Email=@email, gsm=@gsm, nb_enfants=@nb_Enfants "+
+            " WHERE email = @email";
+
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+    //        command.Parameters.AddWithValue("@nom", m.Nom);
+      //      command.Parameters.AddWithValue("@prenom", m.Prenom);
+        //    command.Parameters.AddWithValue("@email", m.Email);
+          //  command.Parameters.AddWithValue("@gsm", m.Gsm);
+            //command.Parameters.AddWithValue("@nb_enfants", m.NbEnfants);
+            command.Parameters.Add("@nom", SqlDbType.VarChar).Value = m.Nom;
+            command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
+            command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
+            
+            command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
+            
+            command.ExecuteNonQuery();
+            bdd.getConnection().Close();
+            Console.WriteLine("Ok update fait");
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void RaisePropertyChanged(String propName)
