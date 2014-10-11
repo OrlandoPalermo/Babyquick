@@ -83,7 +83,7 @@ namespace tab_control
             bdd.getConnection().Open();
 
             string requete = "UPDATE Membre "
-            +"SET Nom=@nom, Prenom=@prenom, Email=@email, gsm=@gsm, nb_enfants=@nb_Enfants "+
+            + "SET nom=@nom, prenom=@prenom, email=@email, gsm=@gsm, nb_enfants=@nb_Enfants " +
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
@@ -98,10 +98,10 @@ namespace tab_control
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
             
             command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
-            
+            command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
-            Console.WriteLine("Ok update fait");
+            Console.WriteLine("Ok update fait : " + m.Nom);
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

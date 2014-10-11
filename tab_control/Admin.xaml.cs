@@ -60,6 +60,7 @@ namespace tab_control
                 Bdd bdd = Bdd.getInstance();
                 UserDao userDao = new UserDao(bdd);
                 userDao.delete(m);
+                m = null;
             }
             else
             {
@@ -74,14 +75,14 @@ namespace tab_control
             
         }
 
-        private void ParentsBDD_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private void ParentsBDD_CellEditEnding_1(object sender, DataGridCellEditEndingEventArgs e)
         {
-            
             if (m != null)
             {
                 Bdd bdd = Bdd.getInstance();
                 UserDao userDao = new UserDao(bdd);
                 userDao.update(m);
+                Console.WriteLine("Okkkkkkkkkkkkkkkk");
             }
             else
             {

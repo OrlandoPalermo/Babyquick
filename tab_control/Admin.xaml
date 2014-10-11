@@ -38,7 +38,7 @@
                         </Style>
                     </TabControl.Resources>
                     <TabItem Header="Parents" Width="294">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0" Name="ParentsBDD" AutoGenerateColumns="False" SelectionChanged="SelectionItem_Click">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0" Name="ParentsBDD" AutoGenerateColumns="False" SelectionChanged="SelectionItem_Click" CellEditEnding="ParentsBDD_CellEditEnding_1">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
