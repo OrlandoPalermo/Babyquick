@@ -32,7 +32,7 @@ namespace tab_control
             uD.add(m);
 
             List<Membre> membres = uD.findAll();
-            //Coucou je suis un commentaire
+            //et ma soeur aussi 
             parents       = new ObservableCollection<Membre>();
             babysitters   = new ObservableCollection<Membre>();
             intermediaire = new ObservableCollection<Membre>();
