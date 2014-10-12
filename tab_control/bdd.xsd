@@ -232,7 +232,7 @@ SELECT id, date_emission, date_prevu, date_fin, id_demande FROM RendezVous WHERE
   <xs:element name="bdd" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="bdd" msprop:Generator_UserDSName="bdd">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Demande" msprop:Generator_TableClassName="DemandeDataTable" msprop:Generator_TableVarName="tableDemande" msprop:Generator_TablePropName="Demande" msprop:Generator_RowDeletingName="DemandeRowDeleting" msprop:Generator_RowChangingName="DemandeRowChanging" msprop:Generator_RowEvHandlerName="DemandeRowChangeEventHandler" msprop:Generator_RowDeletedName="DemandeRowDeleted" msprop:Generator_UserTableName="Demande" msprop:Generator_RowChangedName="DemandeRowChanged" msprop:Generator_RowEvArgName="DemandeRowChangeEvent" msprop:Generator_RowClassName="DemandeRow">
+        <xs:element name="Demande" msprop:Generator_TableClassName="DemandeDataTable" msprop:Generator_TableVarName="tableDemande" msprop:Generator_RowChangedName="DemandeRowChanged" msprop:Generator_TablePropName="Demande" msprop:Generator_RowDeletingName="DemandeRowDeleting" msprop:Generator_RowChangingName="DemandeRowChanging" msprop:Generator_RowEvHandlerName="DemandeRowChangeEventHandler" msprop:Generator_RowDeletedName="DemandeRowDeleted" msprop:Generator_RowClassName="DemandeRow" msprop:Generator_UserTableName="Demande" msprop:Generator_RowEvArgName="DemandeRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -261,10 +261,10 @@ SELECT id, date_emission, date_prevu, date_fin, id_demande FROM RendezVous WHERE
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Membre" msprop:Generator_TableClassName="MembreDataTable" msprop:Generator_TableVarName="tableMembre" msprop:Generator_TablePropName="Membre" msprop:Generator_RowDeletingName="MembreRowDeleting" msprop:Generator_RowChangingName="MembreRowChanging" msprop:Generator_RowEvHandlerName="MembreRowChangeEventHandler" msprop:Generator_RowDeletedName="MembreRowDeleted" msprop:Generator_UserTableName="Membre" msprop:Generator_RowChangedName="MembreRowChanged" msprop:Generator_RowEvArgName="MembreRowChangeEvent" msprop:Generator_RowClassName="MembreRow">
+        <xs:element name="Membre" msprop:Generator_TableClassName="MembreDataTable" msprop:Generator_TableVarName="tableMembre" msprop:Generator_RowChangedName="MembreRowChanged" msprop:Generator_TablePropName="Membre" msprop:Generator_RowDeletingName="MembreRowDeleting" msprop:Generator_RowChangingName="MembreRowChanging" msprop:Generator_RowEvHandlerName="MembreRowChangeEventHandler" msprop:Generator_RowDeletedName="MembreRowDeleted" msprop:Generator_RowClassName="MembreRow" msprop:Generator_UserTableName="Membre" msprop:Generator_RowEvArgName="MembreRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
               <xs:element name="nom" msprop:Generator_ColumnVarNameInTable="columnnom" msprop:Generator_ColumnPropNameInRow="nom" msprop:Generator_ColumnPropNameInTable="nomColumn" msprop:Generator_UserColumnName="nom">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -306,7 +306,7 @@ SELECT id, date_emission, date_prevu, date_fin, id_demande FROM RendezVous WHERE
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="RendezVous" msprop:Generator_TableClassName="RendezVousDataTable" msprop:Generator_TableVarName="tableRendezVous" msprop:Generator_TablePropName="RendezVous" msprop:Generator_RowDeletingName="RendezVousRowDeleting" msprop:Generator_RowChangingName="RendezVousRowChanging" msprop:Generator_RowEvHandlerName="RendezVousRowChangeEventHandler" msprop:Generator_RowDeletedName="RendezVousRowDeleted" msprop:Generator_UserTableName="RendezVous" msprop:Generator_RowChangedName="RendezVousRowChanged" msprop:Generator_RowEvArgName="RendezVousRowChangeEvent" msprop:Generator_RowClassName="RendezVousRow">
+        <xs:element name="RendezVous" msprop:Generator_TableClassName="RendezVousDataTable" msprop:Generator_TableVarName="tableRendezVous" msprop:Generator_RowChangedName="RendezVousRowChanged" msprop:Generator_TablePropName="RendezVous" msprop:Generator_RowDeletingName="RendezVousRowDeleting" msprop:Generator_RowChangingName="RendezVousRowChanging" msprop:Generator_RowEvHandlerName="RendezVousRowChangeEventHandler" msprop:Generator_RowDeletedName="RendezVousRowDeleted" msprop:Generator_RowClassName="RendezVousRow" msprop:Generator_UserTableName="RendezVous" msprop:Generator_RowEvArgName="RendezVousRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -344,6 +344,10 @@ SELECT id, date_emission, date_prevu, date_fin, id_demande FROM RendezVous WHERE
     <xs:unique name="Membre_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:Membre" />
       <xs:field xpath="mstns:id" />
+    </xs:unique>
+    <xs:unique name="Constraint2">
+      <xs:selector xpath=".//mstns:Membre" />
+      <xs:field xpath="mstns:email" />
     </xs:unique>
     <xs:unique name="RendezVous_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:RendezVous" />

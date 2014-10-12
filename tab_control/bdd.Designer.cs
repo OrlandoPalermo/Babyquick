@@ -828,10 +828,10 @@ namespace tab_control {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public MembreRow AddMembreRow(int id, string nom, string prenom, string gsm, string email, byte types_membre, byte nb_enfants, string date_dispo, byte confirm) {
+            public MembreRow AddMembreRow(string nom, string prenom, string gsm, string email, byte types_membre, byte nb_enfants, string date_dispo, byte confirm) {
                 MembreRow rowMembreRow = ((MembreRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        id,
+                        null,
                         nom,
                         prenom,
                         gsm,
@@ -903,6 +903,11 @@ namespace tab_control {
                 base.Columns.Add(this.columnconfirm);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid}, true));
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint2", new global::System.Data.DataColumn[] {
+                                this.columnemail}, false));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
                 this.columnid.AllowDBNull = false;
                 this.columnid.Unique = true;
                 this.columnnom.AllowDBNull = false;
@@ -912,6 +917,7 @@ namespace tab_control {
                 this.columngsm.AllowDBNull = false;
                 this.columngsm.MaxLength = 16;
                 this.columnemail.AllowDBNull = false;
+                this.columnemail.Unique = true;
                 this.columnemail.MaxLength = 70;
                 this.columntypes_membre.AllowDBNull = false;
                 this.columnnb_enfants.AllowDBNull = false;

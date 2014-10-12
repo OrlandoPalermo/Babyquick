@@ -80,28 +80,32 @@ namespace tab_control
         /*Permet de modifier les tuples dans la table.*/
         public void update(Membre m)
         {
-            bdd.getConnection().Open();
+             bdd.getConnection().Open();
 
             string requete = "UPDATE Membre "
             + "SET nom=@nom, prenom=@prenom, email=@email, gsm=@gsm, nb_enfants=@nb_Enfants " +
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
-    //        command.Parameters.AddWithValue("@nom", m.Nom);
-      //      command.Parameters.AddWithValue("@prenom", m.Prenom);
-        //    command.Parameters.AddWithValue("@email", m.Email);
-          //  command.Parameters.AddWithValue("@gsm", m.Gsm);
+            //command.Parameters.AddWithValue("@nom", m.Nom);
+            //command.Parameters.AddWithValue("@prenom", m.Prenom);
+            //command.Parameters.AddWithValue("@email", m.Email);
+            //command.Parameters.AddWithValue("@gsm", m.Gsm);
             //command.Parameters.AddWithValue("@nb_enfants", m.NbEnfants);
+            
             command.Parameters.Add("@nom", SqlDbType.VarChar).Value = m.Nom;
             command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
             command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
-            
             command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
+
+            
+            
+           
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
-            Console.WriteLine("Ok update fait : " + m.Nom);
+           // Console.WriteLine("Ok update fait : " + m.Nom);
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
