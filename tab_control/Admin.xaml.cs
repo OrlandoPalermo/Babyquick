@@ -31,10 +31,12 @@ namespace tab_control
             Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
             Membre m2 = new Membre("al", "adin", "0474324195", "test@gmail.com", 1, 0, "10/10/2014", "a");
             Membre baby1 = new Membre("baby", "sitter", "0474324195", "baby1@gmail.com", 2, 0, "10/12/2014", "test");
+            Membre inter = new Membre("inter", "test", "0495123563", "inter@gmail.com", 3, 0, "10/05/2012", "test");
            
             uD.add(m);
             uD.add(m2);
             uD.add(baby1);
+            uD.add(inter);
             List<Membre> membres = uD.findAll();
             
             parents       = new ObservableCollection<Membre>();
@@ -53,12 +55,17 @@ namespace tab_control
                     case 2:
                         babysitters.Add(me);
                         break;
+
+                    case 3:
+                        intermediaire.Add(me);
+                        break;
                 }
             }
             //Console.WriteLine(membres[0].NbEnfants + ", " +  membres[0].Nom);
 
             this.ParentsBDD.ItemsSource = parents;
             this.BabysitterBDD.ItemsSource = babysitters;
+            this.IntermediaireBDD.ItemsSource = intermediaire;
         }
 
         private void SuprimerMembre_Click(object sender, RoutedEventArgs e)
@@ -177,6 +184,52 @@ namespace tab_control
 
                 Console.WriteLine("Okkkkkkkkkkkkkkkk");
                // Console.WriteLine("test date"+ m.DateDispo);
+
+            }
+            else
+            {
+                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+            }
+        }
+
+        private void IntermediaireBDD_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            m = ((Membre)IntermediaireBDD.SelectedItem);
+        }
+
+        private void IntermediaireBDD_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (m != null)
+            {
+                Bdd bdd = Bdd.getInstance();
+                UserDao userDao = new UserDao(bdd);
+
+                int index = ((DataGrid)sender).ItemContainerGenerator.IndexFromContainer(e.Row);
+                int colIndex = e.Column.DisplayIndex;
+                var result = (e.EditingElement as TextBox).Text.ToString();
+                switch (colIndex)
+                {
+                    case 0:
+                        m.Nom = result;
+                        userDao.update(m);
+                        break;
+                    case 1:
+                        m.Prenom = result;
+                        userDao.update(m);
+                        break;
+                    case 2:
+                        m.Email = result;
+                        userDao.update(m);
+                        break;
+                    case 3:
+                        m.Gsm = result;
+                        userDao.update(m);
+                        break;
+                }
+                // userDao.update(m);
+
+                Console.WriteLine("Okkkkkkkkkkkkkkkk");
+                // Console.WriteLine("test date"+ m.DateDispo);
 
             }
             else

@@ -76,12 +76,16 @@
                         </DataGrid>
                     </TabItem>
                     <TabItem Header="Intermédiaire" Width="300">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0">
+                        <DataGrid Width="800" Margin="0, 20, 0, 0"
+                                  AutoGenerateColumns="False"
+                                  Name="IntermediaireBDD"
+                                  SelectionChanged="IntermediaireBDD_SelectionChanged"
+                                  CellEditEnding="IntermediaireBDD_CellEditEnding">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nom"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Prenom"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Mail"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Gsm"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Mail" Binding="{Binding Email}"></DataGridTextColumn>
+                                <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
