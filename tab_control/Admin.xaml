@@ -64,7 +64,11 @@
                         <DataGrid Width="800" Margin="0, 20, 0, 0"
                                   Name="BabysitterBDD" AutoGenerateColumns="False"
                                   SelectionChanged="BabysitterBDD_SelectionChanged"
-                                  CellEditEnding="BabysitterBDD_CellEditEnding">
+                                  CellEditEnding="BabysitterBDD_CellEditEnding"
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                  Height="600">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
@@ -80,7 +84,11 @@
                                   AutoGenerateColumns="False"
                                   Name="IntermediaireBDD"
                                   SelectionChanged="IntermediaireBDD_SelectionChanged"
-                                  CellEditEnding="IntermediaireBDD_CellEditEnding">
+                                  CellEditEnding="IntermediaireBDD_CellEditEnding"
+                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                  ScrollViewer.CanContentScroll="True"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                  Height="600">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>

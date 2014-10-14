@@ -62,7 +62,7 @@ namespace tab_control
                 }
             }
             //Console.WriteLine(membres[0].NbEnfants + ", " +  membres[0].Nom);
-
+// Charge le dataGrid avec la liste. 
             this.ParentsBDD.ItemsSource = parents;
             this.BabysitterBDD.ItemsSource = babysitters;
             this.IntermediaireBDD.ItemsSource = intermediaire;
