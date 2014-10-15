@@ -22,9 +22,11 @@ namespace tab_control
     {
         private Membre m;
         private ObservableCollection<Membre> parents, babysitters, intermediaire;
+        private int fenetreActive;
 
         public Admin()
         {
+            fenetreActive = 1;
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
 
@@ -75,7 +77,22 @@ namespace tab_control
                 Bdd bdd = Bdd.getInstance();
                 UserDao userDao = new UserDao(bdd);
                 userDao.delete(m);
+
+                switch (fenetreActive)
+                {
+                    case 1:
+                        parents.Remove(m);
+                        break;
+                    case 2:
+                        babysitters.Remove(m);
+                        break;
+                    case 3:
+                        intermediaire.Remove(m);
+                        break;
+                }
                 m = null;
+
+
             }
             else
             {
@@ -237,6 +254,26 @@ namespace tab_control
                 MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
             }
         }
+
+        private void TabItem_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            String fenetre = ((TabItem)sender).Header.ToString();
+
+            if (fenetre == "Parents")
+            {
+                fenetreActive = 1;
+            }
+            else if (fenetre == "Babysitter")
+            {
+                fenetreActive = 2;
+            }
+            else
+            {
+                fenetreActive = 3;
+            }
+        }
+
+ 
 
 
     }
