@@ -13,7 +13,7 @@
     <WrapPanel>
         <StackPanel Orientation="Vertical" MinWidth="200">
             <Label Content="Boite de réception"></Label>
-            <ListBox x:Name="listMail" DisplayMemberPath="Email"></ListBox>
+            <ListBox x:Name="listMail" DisplayMemberPath="Email" SelectionChanged="listMail_SelectionChanged"></ListBox>
         </StackPanel>
         
         <TabControl>

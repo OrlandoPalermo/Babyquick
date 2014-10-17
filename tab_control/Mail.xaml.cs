@@ -21,19 +21,36 @@ namespace tab_control
     /// </summary>
     partial class Mail : UserControl
     {
-        private Membre m;
+        private Membre m,m2;
         private ObservableCollection<Membre> users = new ObservableCollection<Membre>();
 
         public Mail()
         {
             InitializeComponent();
             m = new Membre("Alexandre", "prenom", "gsm", "alexandrebrosteau@gmail.com", 1, 0, "10/10/2014", "a");
+            m2 = new Membre("Orlando", "poop", "0475235263", "orlandoPalerm@gmail.com", 1, 0, "12/10/2014", "b");
+
 
             users.Add(m);
+            users.Add(m2);
 
+           
             listMail.ItemsSource = users;
-            de.Content = m.Nom;
+            //de.Content = m.Nom;
         }
+
+        private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Membre mb = listMail.SelectedItem as Membre;
+            de.Content =mb.Nom;
+                   
+            
+        }
+
+        /*private void listMail_Selected(object sender, RoutedEventArgs e)
+        {
+            //m = ((Membre)MailBDD.SelectedItem);
+        }*/
 
     }
 }
