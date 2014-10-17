@@ -5,7 +5,64 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="1000">
-    <StackPanel HorizontalAlignment="Center">
+    
+    <!--ItemsSource="{Binding Path=users}"
+        DisplayMemberPath="listMail"
+        Content="{Binding Path=Name}" 
+    -->
+    <WrapPanel>
+        <StackPanel Orientation="Vertical" MinWidth="200">
+            <Label Content="Boite de réception"></Label>
+            <ListBox x:Name="listMail" DisplayMemberPath="Email"></ListBox>
+        </StackPanel>
+        
+        <TabControl>
+            <TabItem Header="Boite de réception">
+                <StackPanel HorizontalAlignment="Center">
+                    <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Width="100" HorizontalAlignment="Right" ToolTip="Supprime l'email sélectionné"></Button>
+                    
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="De: "></Label>
+                        <Label x:Name="de" Content="{Binding Path=Nom}"></Label>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label Content="Objet: "></Label>
+                        <Label Content="{Binding Path=Objet}"></Label>
+                    </WrapPanel>
+                    <TextBox Text="{Binding Path=Mail}" 
+                             Name="mail" 
+                             MaxHeight="500" 
+                             MaxWidth="700" 
+                             Height="500" 
+                             Width="700" 
+                             AcceptsReturn="True" 
+                             IsReadOnly="True"
+                             IsInactiveSelectionHighlightEnabled="True"></TextBox>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Nouveau">
+                <StackPanel HorizontalAlignment="Center">
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+                        <Label Content="Pseudonyme :"></Label>
+                        <TextBox Name="Pseudo" Width="600"></TextBox>
+                        <Label Content="Babysitter" Foreground="White" Background="Black"></Label>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+                        <Label Content="Sujet"></Label>
+                        <TextBox Name="Subject" Width="600"></TextBox>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+                        <TextBox Height="500" Width="700" AcceptsReturn="True" ></TextBox>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
+                        <Button Name="SubmitMail" Content="Envoyer" Padding="10"></Button>
+                    </WrapPanel>
+                </StackPanel>
+            </TabItem>
+            
+        </TabControl>        
+    </WrapPanel>
+   <!-- <StackPanel HorizontalAlignment="Center">
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
             <Label Content="Pseudonyme :"></Label>
             <TextBox Name="Pseudo" Width="600"></TextBox>
@@ -21,5 +78,5 @@
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
             <Button Name="SubmitMail" Content="Envoyer" Padding="10"></Button>
         </WrapPanel>
-    </StackPanel>
+    </StackPanel> -->
 </UserControl>

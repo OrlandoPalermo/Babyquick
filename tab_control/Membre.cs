@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace tab_control
 {
-    class Membre 
+    public class Membre : INotifyPropertyChanged
     {
         private int id;
         private String nom, prenom, gsm, email, dateDispo, password;  
@@ -39,61 +40,97 @@ namespace tab_control
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set
+            {
+                id = value;
+                this.RaisePropertyChanged("Id");
+            }
         }
 
         public String Nom
         {
             get { return nom; }
-            set { nom = value; }
+            set
+            {
+                nom = value;
+                this.RaisePropertyChanged("Nom");
+            }
         }
 
         public String DateDispo
         {
             get { return dateDispo; }
-            set { dateDispo = value; }
+            set
+            {
+                dateDispo = value;
+                this.RaisePropertyChanged("DateDispo");
+            }
         }
 
         public String Email
         {
             get { return email; }
-            set { email = value; }
+            set
+            {
+                email = value;
+                this.RaisePropertyChanged("Email");
+            }
         }
 
         public String Password
         {
             get { return password; }
-            set { password = value; }
+            set
+            {
+                password = value;
+                this.RaisePropertyChanged("Password");
+            }
         }
 
         public String Gsm
         {
             get { return gsm; }
-            set { gsm = value; }
+            set { gsm = value;
+
+            this.RaisePropertyChanged("Gsm");
+            }
         }
 
         public String Prenom
         {
             get { return prenom; }
-            set { prenom = value; }
+            set
+            {
+                prenom = value;
+                this.RaisePropertyChanged("Prenom");
+            }
         }
 
         public bool Confirm
         {
             get { return confirm; }
-            set { confirm = value; }
+            set { confirm = value;
+
+            this.RaisePropertyChanged("Confirm");
+            }
         }
 
         public short NbEnfants
         {
             get { return nbEnfants; }
-            set { nbEnfants = value; }
+            set { nbEnfants = value;
+
+            this.RaisePropertyChanged("NbEnfants");
+            }
         }
 
         public short Type
         {
             get { return type; }
-            set { type = value; }
+            set { type = value;
+            this.RaisePropertyChanged("Type");
+
+            }
         }
 
         public override bool Equals(object obj)
@@ -107,5 +144,12 @@ namespace tab_control
 
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void RaisePropertyChanged(String propName)
+        {
+            if(this.PropertyChanged != null)
+            this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
     }
 }
