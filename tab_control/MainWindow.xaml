@@ -50,10 +50,10 @@
                 </WrapPanel>
                 <DataGrid>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nom" Width="120"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Prénom" Width="120"></DataGridTextColumn>
-                        <DataGridTextColumn Header="E-mail" Width="120"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Nombre d'enfants" Width="125"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Nom" Width="120" Binding="{Binding Nom}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Prénom" Width="120" Binding="{Binding Prenom}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="E-mail" Width="120" Binding="{Binding Email}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Nombre d'enfants" Width="125" Binding="{Binding NbEnfants}"></DataGridTextColumn>
                         <DataGridTextColumn Header="Date de début" Width="120"></DataGridTextColumn>
                         <DataGridTextColumn Header="Date de fin" Width="120"></DataGridTextColumn>
                         <DataGridTextColumn Header="Babysitter assigné" Width="130"></DataGridTextColumn>

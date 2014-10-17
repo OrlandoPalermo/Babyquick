@@ -99,9 +99,6 @@ namespace tab_control
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
             command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
 
-            
-            
-           
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
@@ -114,5 +111,64 @@ namespace tab_control
             if (PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+
+        public string getPassword(string email)
+        {
+            
+            
+            bdd.getConnection().Open();
+            string requete = "SELECT password FROM Membre WHERE email = @email";
+            
+            SqlDataReader reader;
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+            reader = command.ExecuteReader();
+            string password = "";
+            if (reader.HasRows)
+            {
+                
+                while (reader.Read())
+                {
+                       password = reader["password"]as string;
+                      
+                }
+            }
+            bdd.getConnection().Close();
+            return password;
+
+        }
+
+        //public Membre getMembre(string email)
+        //{
+        //    SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE email = @email", bdd.getConnection());
+        //    command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+        //    SqlDataReader r = command.ExecuteReader();
+        //    Membre m = null;
+        //    if (r.HasRows)
+        //    {
+
+
+        //        while (r.Read())
+        //        {
+        //            short type = short.Parse(r["types_membre"].ToString());
+
+        //            switch (type)
+        //            {
+        //                case 1:
+        //                    short nbE = short.Parse(r["nb_enfants"].ToString());
+        //                    m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
+        //                    break;
+        //                case 2:
+        //                    m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
+        //                    break;
+                        
+        //                case 3:
+                           
+        //            }
+        //        }
+        //    }
+
+        //    return m;
+        //}
     }
 }

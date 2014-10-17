@@ -19,10 +19,16 @@ namespace tab_control
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
     public partial class Window1 : Window
-    {
+    { 
+        private Bdd donnee = Bdd.getInstance();
+        private UserDao uD;
+        private Membre m;
         public Window1()
         {
             InitializeComponent();
+           
+           
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -36,19 +42,37 @@ namespace tab_control
          */
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            /*Membre tmpMembre = new Membre(email.Text, password.Text);
+          /*  uD = new UserDao(donnee);
 
-            //Ce membre est pour l'instant créer artificiellement pour simuler un membre provenant de la BDD
-            Membre realMembre = new Membre("a", "a");
+            string mail = email.Text;
+            string pass = uD.getPassword(mail);
+            m = uD.getMembre(mail);
+
+            if (pass == password.Text && m.Email == email.Text)
+            {
+                short type = m.Type;
+                switch (type)
+                {
+                    case 0:
+                        Admin main = new Admin();
+                        main.Show();
+                        this.Close();
+                        break;
+                    case 3:
+                        MainWindow inter = new MainWindow();
+                        inter.Show();
+                        this.Close();
+                        break;
+                }
+            }
             */
-                
-            
-            
-            
+            //MainWindow inter = new MainWindow();
+            //inter.Show();
+            //this.Close();
+
             Admin main = new Admin();
             main.Show();
             this.Close();
-            
         }
     }
 }

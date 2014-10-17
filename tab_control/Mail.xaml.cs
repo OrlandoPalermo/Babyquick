@@ -36,7 +36,6 @@ namespace tab_control
 
            
             listMail.ItemsSource = users;
-            //de.Content = m.Nom;
         }
 
         private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,11 +45,6 @@ namespace tab_control
                    
             
         }
-
-        /*private void listMail_Selected(object sender, RoutedEventArgs e)
-        {
-            //m = ((Membre)MailBDD.SelectedItem);
-        }*/
 
     }
 }
