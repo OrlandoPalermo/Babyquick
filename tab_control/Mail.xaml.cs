@@ -1,4 +1,5 @@
-﻿using System;
+﻿using newBabyQuick;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,31 +20,68 @@ namespace tab_control
     /// <summary>
     /// Logique d'interaction pour Mail.xaml
     /// </summary>
-    partial class Mail : UserControl
+   public partial class Mail : UserControl
     {
+        private static Membre connectedMember;
         private Membre m,m2;
-        private ObservableCollection<Membre> users = new ObservableCollection<Membre>();
-
+        private static ObservableCollection<Message> messages = new ObservableCollection<Message>();
+       
         public Mail()
         {
             InitializeComponent();
-            m = new Membre("Alexandre", "prenom", "gsm", "alexandrebrosteau@gmail.com", 1, 0, "10/10/2014", "a");
+           /* m = new Membre("Alexandre", "prenom", "gsm", "alexandrebrosteau@gmail.com", 1, 0, "10/10/2014", "a");
             m2 = new Membre("Orlando", "poop", "0475235263", "orlandoPalerm@gmail.com", 1, 0, "12/10/2014", "b");
 
 
             users.Add(m);
-            users.Add(m2);
+            users.Add(m2);*/
 
-           
-            listMail.ItemsSource = users;
+            Console.WriteLine("Je suis appelé !");
+            listMail.ItemsSource = messages;
+        }
+
+        public static Membre ConnectedMember
+        {
+            get { return connectedMember; }
+            set { 
+                connectedMember = value;
+                Bdd bdd = Bdd.getInstance();
+                MessageDao MDao = new MessageDao(bdd);
+                messages = MDao.getMessages(connectedMember.Id);
+            }
         }
 
         private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Membre mb = listMail.SelectedItem as Membre;
-            de.Content =mb.Nom;
+            Message mb = listMail.SelectedItem as Message;
+            de.Content =mb.Sujet;
                    
             
+        }
+
+        private void SubmitMail_Click(object sender, RoutedEventArgs e)
+        {
+            Bdd bdd = Bdd.getInstance();
+            MessageDao MDao = new MessageDao(bdd);
+            UserDao UDao = new UserDao(bdd);
+
+            String email, sujet, contenu;
+            email = Pseudo.Text;
+            sujet = Subject.Text;
+            contenu = Contenu.Text;
+
+            if (email != "" && sujet != "" && contenu != "")
+            {
+                int idReceveur = UDao.getId(email);
+
+                //TODO FAILLLLLE à cause du 0
+                if (idReceveur != 0 && idReceveur != null)
+                {
+                    Message m = new Message(ConnectedMember.Id, idReceveur, sujet, contenu);
+                    MDao.add(m);
+                }
+                
+            }
         }
 
     }

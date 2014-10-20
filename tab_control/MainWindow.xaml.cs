@@ -12,14 +12,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using tab_control.Classes;
 
 namespace tab_control
 {
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private Intermediaire connectedMember;
+        public MainWindow(Intermediaire inter)
         {
+            
             InitializeComponent();
+            connectedMember = inter;
             
         }
 

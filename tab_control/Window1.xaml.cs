@@ -1,4 +1,5 @@
-﻿using System;
+﻿using newBabyQuick;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tab_control.Classes;
 
 namespace tab_control
 {
@@ -26,53 +28,46 @@ namespace tab_control
         public Window1()
         {
             InitializeComponent();
-           
-           
-
+            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Hide();
-            MainWindow main = new MainWindow();
-            main.Show();
-        }
         /*
          * Bouton permettant la connexion d'un membre (intermédiaire ou admin) 
          */
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-          /*  uD = new UserDao(donnee);
+            Bdd bdd = Bdd.getInstance();
+            UserDao MDao = new UserDao(bdd);
+            String emailM = email.Text as string;
+            String truePassword = MDao.getPassword(emailM);
 
-            string mail = email.Text;
-            string pass = uD.getPassword(mail);
-            m = uD.getMembre(mail);
-
-            if (pass == password.Text && m.Email == email.Text)
+            if (truePassword == password.Text)
             {
-                short type = m.Type;
-                switch (type)
+                Membre membre = MDao.getMembre(emailM);
+
+                if (membre == null)
+                    MessageBox.Show("Vous n'êtes pas autorisé à utiliser ce programme !");
+                else
                 {
-                    case 0:
-                        Admin main = new Admin();
-                        main.Show();
-                        this.Close();
-                        break;
-                    case 3:
-                        MainWindow inter = new MainWindow();
-                        inter.Show();
-                        this.Close();
-                        break;
+                    switch (membre.Type)
+                    {
+                        case 0:
+                            Admin main = new Admin(membre as AdminC);
+                            main.Show();
+                            this.Close();
+                            break;
+                        case 1:
+                        case 2:
+                            MessageBox.Show("Vous n'êtes pas autorisé à utiliser ce programme !");
+                            break;
+                        case 3:
+                            MainWindow inter = new MainWindow(membre as Intermediaire);
+                            inter.Show();
+                            this.Close();
+                            break;
+                    }
                 }
             }
-            */
-            //MainWindow inter = new MainWindow();
-            //inter.Show();
-            //this.Close();
-
-            Admin main = new Admin();
-            main.Show();
-            this.Close();
         }
     }
 }

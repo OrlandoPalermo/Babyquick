@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.ComponentModel;
+using newBabyQuick;
+using tab_control.Classes;
 
 namespace tab_control
 {
@@ -18,7 +20,7 @@ namespace tab_control
             this.bdd = bdd;
         }
 
-        public void add(Membre m)
+       /* public void add(Membre m)
         {
             bdd.getConnection().Open();
             string requete = "INSERT INTO Membre"
@@ -38,26 +40,36 @@ namespace tab_control
             Console.WriteLine("Ok !");
             bdd.getConnection().Close();
         }
-
+        */
         public List<Membre> findAll()
         {
             List<Membre> membres = new List<Membre>();
-            SqlDataReader reader;
+            SqlDataReader r;
             bdd.getConnection().Open();
             string requete = "SELECT * FROM Membre";
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
-            reader = command.ExecuteReader();
+            r = command.ExecuteReader();
            
 
-            if (reader.HasRows)
+            if (r.HasRows)
             {
                 Membre m = null;
-                while (reader.Read())
+                while (r.Read())
                 {
-                    Console.WriteLine(reader["nb_enfants"]);
-                    short type = short.Parse(reader["types_membre"].ToString());
-                    short nbE = short.Parse(reader["nb_enfants"].ToString());
-                    m = new Membre(reader["nom"] as string, reader["prenom"] as string, reader["gsm"] as string, reader["email"] as string, type, nbE, reader["date_dispo"] as string);
+                    short type = short.Parse(r["types_membre"].ToString());
+   
+                    switch(type) {
+                        case 1:
+                             short nbE = short.Parse(r["nb_enfants"].ToString());
+                             m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
+                             break;
+                        case 2:
+
+                             break;
+
+                    }
+                     
+                    
                     membres.Add(m);
                 }
             }
@@ -87,17 +99,12 @@ namespace tab_control
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
-            //command.Parameters.AddWithValue("@nom", m.Nom);
-            //command.Parameters.AddWithValue("@prenom", m.Prenom);
-            //command.Parameters.AddWithValue("@email", m.Email);
-            //command.Parameters.AddWithValue("@gsm", m.Gsm);
-            //command.Parameters.AddWithValue("@nb_enfants", m.NbEnfants);
-            
             command.Parameters.Add("@nom", SqlDbType.VarChar).Value = m.Nom;
             command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
             command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
-            command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
+            if (m.Type == 1)
+                command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = ((Parent) m).NbEnfants;
 
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
@@ -114,8 +121,6 @@ namespace tab_control
 
         public string getPassword(string email)
         {
-            
-            
             bdd.getConnection().Open();
             string requete = "SELECT password FROM Membre WHERE email = @email";
             
@@ -126,49 +131,67 @@ namespace tab_control
             string password = "";
             if (reader.HasRows)
             {
-                
                 while (reader.Read())
                 {
-                       password = reader["password"]as string;
-                      
+                    password = reader["password"] as string;  
+
+                }
+                    
+            }
+
+            bdd.getConnection().Close();
+            return password;
+        }
+
+        public Membre getMembre(string email)
+        {
+            bdd.getConnection().Open();
+            SqlCommand command = new SqlCommand("SELECT id, nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE email = @email", bdd.getConnection());
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+            SqlDataReader r = command.ExecuteReader();
+            Membre m = null;
+            if (r.HasRows)
+            {
+                int id;
+                while (r.Read())
+                {
+                    short type = short.Parse(r["types_membre"].ToString());
+
+                    switch (type)
+                    {
+                        case 0:
+                            m = new AdminC(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, "null");
+                            break;
+                        case 1:
+                        case 2: return null;
+                        case 3:
+                            m = new Intermediaire(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, "null");
+                            break;
+                    }
+                    id = int.Parse(r["id"].ToString());
+                    m.Id = id;
                 }
             }
             bdd.getConnection().Close();
-            return password;
-
+            return m;
         }
 
-        //public Membre getMembre(string email)
-        //{
-        //    SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE email = @email", bdd.getConnection());
-        //    command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
-        //    SqlDataReader r = command.ExecuteReader();
-        //    Membre m = null;
-        //    if (r.HasRows)
-        //    {
-
-
-        //        while (r.Read())
-        //        {
-        //            short type = short.Parse(r["types_membre"].ToString());
-
-        //            switch (type)
-        //            {
-        //                case 1:
-        //                    short nbE = short.Parse(r["nb_enfants"].ToString());
-        //                    m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
-        //                    break;
-        //                case 2:
-        //                    m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
-        //                    break;
-                        
-        //                case 3:
-                           
-        //            }
-        //        }
-        //    }
-
-        //    return m;
-        //}
+        public int getId(string email)
+        {
+            bdd.getConnection().Open();
+            SqlCommand command = new SqlCommand("SELECT id FROM Membre WHERE email = @email", bdd.getConnection());
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+            SqlDataReader r = command.ExecuteReader();
+            int id = 0;
+            if (r.HasRows)
+            {
+                while (r.Read())
+                {
+                    id = int.Parse(r["id"].ToString());
+                }
+            }
+            bdd.getConnection().Close();
+            return id;
+        }
     }
 }

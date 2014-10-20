@@ -88,10 +88,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bdd.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Classes\AdminC.cs" />
+    <Compile Include="Classes\Babysitter.cs" />
+    <Compile Include="Classes\Demande.cs" />
+    <Compile Include="Classes\Intermediaire.cs" />
+    <Compile Include="Classes\Parent.cs" />
     <Compile Include="Mail.xaml.cs">
       <DependentUpon>Mail.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Membre.cs" />
+    <Compile Include="Classes\Membre.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="MessageDao.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>

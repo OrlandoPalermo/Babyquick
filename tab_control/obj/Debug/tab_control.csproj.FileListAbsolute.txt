@@ -98,3 +98,30 @@ D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\CSharpApplicatio
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\CSharpApplicationTest\projetBabyQuick\Babyquick\tab_control\obj\Debug\tab_control.g.resources
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\CSharpApplicationTest\projetBabyQuick\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\CSharpApplicationTest\projetBabyQuick\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.exe.config
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.exe
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.pdb
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.exe
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.pdb
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.dll
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.dll
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.xml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.xml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Mail.baml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\UserControl1.baml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Window1.baml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Admin.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Mail.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\MainWindow.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\UserControl1.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Window1.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\App.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.cache
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.lref
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Admin.baml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\MainWindow.baml
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.g.resources
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
+E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache

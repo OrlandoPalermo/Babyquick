@@ -1,4 +1,5 @@
-﻿using System;
+﻿using newBabyQuick;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using tab_control.Classes;
 
 namespace tab_control
 {
@@ -20,17 +22,23 @@ namespace tab_control
     /// </summary>
     public partial class Admin : Window
     {
+        private AdminC connectedMember;
         private Membre m;
-        private ObservableCollection<Membre> parents, babysitters, intermediaire;
+        private ObservableCollection<Parent> parents;
+        private ObservableCollection<Babysitter> babysitters;
+        private ObservableCollection<Intermediaire> intermediaire;
         private int fenetreActive;
 
-        public Admin()
+        public Admin(AdminC admin)
         {
+            
+            connectedMember = admin;
+            Mail.ConnectedMember = admin;
             fenetreActive = 1;
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
 
-            Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
+            /*Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
             Membre m2 = new Membre("al", "adin", "0474324195", "test@gmail.com", 1, 0, "10/10/2014", "a");
             Membre baby1 = new Membre("baby", "sitter", "0474324195", "baby1@gmail.com", 2, 0, "10/12/2014", "test");
             Membre inter = new Membre("inter", "test", "0495123563", "inter@gmail.com", 3, 0, "10/05/2012", "test");
@@ -38,12 +46,12 @@ namespace tab_control
             uD.add(m);
             uD.add(m2);
             uD.add(baby1);
-            uD.add(inter);
+            uD.add(inter);*/
             List<Membre> membres = uD.findAll();
             
-            parents       = new ObservableCollection<Membre>();
-            babysitters   = new ObservableCollection<Membre>();
-            intermediaire = new ObservableCollection<Membre>();
+            parents       = new ObservableCollection<Parent>();
+            babysitters   = new ObservableCollection<Babysitter>();
+            intermediaire = new ObservableCollection<Intermediaire>();
             InitializeComponent();
             
 
@@ -52,14 +60,14 @@ namespace tab_control
                 switch (me.Type)
                 {
                     case 1:
-                        parents.Add(me);
+                        parents.Add(me as Parent);
                         break;
                     case 2:
-                        babysitters.Add(me);
+                        babysitters.Add(me as Babysitter);
                         break;
 
                     case 3:
-                        intermediaire.Add(me);
+                        intermediaire.Add(me as Intermediaire);
                         break;
                 }
             }
@@ -82,13 +90,13 @@ namespace tab_control
                 switch (fenetreActive)
                 {
                     case 1:
-                        parents.Remove(m);
+                        parents.Remove(m as Parent);
                         break;
                     case 2:
-                        babysitters.Remove(m);
+                        babysitters.Remove(m as Babysitter);
                         break;
                     case 3:
-                        intermediaire.Remove(m);
+                        intermediaire.Remove(m as Intermediaire);
                         break;
                 }
                 m = null;
@@ -104,13 +112,15 @@ namespace tab_control
 
         private void SelectionItem_Click(object sender, RoutedEventArgs e)
         {
-            m = ((Membre)ParentsBDD.SelectedItem);
+            if (fenetreActive == 1)
+                m = ((Parent)ParentsBDD.SelectedItem);
+            else if (fenetreActive == 2)
+                m = ((Babysitter)ParentsBDD.SelectedItem);
             
         }
 
         private void ParentsBDD_CellEditEnding_1(object sender, DataGridCellEditEndingEventArgs e)
         {
-           
             if (m != null)
             {
                 Bdd bdd = Bdd.getInstance();
@@ -138,7 +148,7 @@ namespace tab_control
                         userDao.update(m);
                         break;
                     case 4:
-                        m.NbEnfants = short.Parse(result);
+                        ((Parent)m).NbEnfants = short.Parse(result);
                         userDao.update(m);
                         break;
                 }              
@@ -188,13 +198,13 @@ namespace tab_control
                         userDao.update(m);
                         break;
                     case 4:
-                        m.DateDispo = result;
+                        ((Babysitter)m).DateDispo = result;
                         //Console.WriteLine("testdate" + m.DateDispo);
                         userDao.update(m);
                         //Console.WriteLine("test date après " + m.DateDispo);
                         break;
                     case 5:
-                        m.Confirm = bool.Parse(result);
+                        ((Babysitter)m).Confirm = bool.Parse(result);
                         userDao.update(m);
                         break;
                 }
