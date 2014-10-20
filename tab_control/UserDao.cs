@@ -64,8 +64,11 @@ namespace tab_control
                              m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
                              break;
                         case 2:
-
+                             m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
                              break;
+                        case 3:
+                            m = new Intermediaire(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["password"] as string);
+                            break;
 
                     }
                      
@@ -90,12 +93,30 @@ namespace tab_control
         }
 
         /*Permet de modifier les tuples dans la table.*/
-        public void update(Membre m)
+        public void update(Parent m)
         {
+            //TODO faire les répercutions sur la BDD Asp.net
              bdd.getConnection().Open();
 
+            string requete = "UPDATE Membre SET nom = @nom, prenom = @prenom, gsm = @gsm, nb_enfants = @nb_Enfants WHERE email = @email";
+
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+            command.Parameters.Add("@nom", SqlDbType.VarChar).Value = m.Nom;
+            command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
+            command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
+            command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
+            int rows = command.ExecuteNonQuery();
+            bdd.getConnection().Close();
+            Console.WriteLine("Nombre de ligne modifiées : " + rows + "\nEmail utilisé : " + m.Email);
+        }
+
+        public void update(Babysitter m)
+        {
+            bdd.getConnection().Open();
+
             string requete = "UPDATE Membre "
-            + "SET nom=@nom, prenom=@prenom, email=@email, gsm=@gsm, nb_enfants=@nb_Enfants " +
+            + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo " +
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
@@ -103,13 +124,30 @@ namespace tab_control
             command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
             command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
-            if (m.Type == 1)
-                command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = ((Parent) m).NbEnfants;
+            command.Parameters.Add("@date_dispo", SqlDbType.VarChar).Value = ((m.DateDispo == null) ? "" : m.DateDispo);
 
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
-           // Console.WriteLine("Ok update fait : " + m.Nom);
+        }
+
+        public void update(Intermediaire m)
+        {
+            bdd.getConnection().Open();
+
+            string requete = "UPDATE Membre "
+            + "SET nom=@nom, prenom=@prenom, gsm=@gsm" +
+            " WHERE email = @email";
+
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+            command.Parameters.Add("@nom", SqlDbType.VarChar).Value = m.Nom;
+            command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
+            command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
+        
+            command.CommandType = CommandType.Text;
+            command.ExecuteNonQuery();
+            bdd.getConnection().Close();
         }
         public event PropertyChangedEventHandler PropertyChanged;
 

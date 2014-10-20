@@ -53,7 +53,6 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Mail" Binding="{Binding Email}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Nb. enfants" Binding="{Binding NbEnfants}"></DataGridTextColumn>
                             </DataGrid.Columns>
@@ -72,7 +71,6 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Mail" Binding="{Binding Email}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Actif ?" Binding="{Binding Confirm}"></DataGridTextColumn>
@@ -92,7 +90,6 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Mail" Binding="{Binding Email}"></DataGridTextColumn>
                                 <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                             </DataGrid.Columns>
                         </DataGrid>

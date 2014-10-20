@@ -55,7 +55,8 @@ namespace tab_control
         {
             Message mb = listMail.SelectedItem as Message;
             de.Content =mb.Sujet;
-                   
+
+            mail.Text = mb.Contenu;
             
         }
 

@@ -71,7 +71,6 @@ namespace tab_control
                         break;
                 }
             }
-            //Console.WriteLine(membres[0].NbEnfants + ", " +  membres[0].Nom);
 
 // Charge le dataGrid avec la liste. 
             this.ParentsBDD.ItemsSource = parents;
@@ -93,9 +92,11 @@ namespace tab_control
                         parents.Remove(m as Parent);
                         break;
                     case 2:
+                       
                         babysitters.Remove(m as Babysitter);
                         break;
                     case 3:
+                        
                         intermediaire.Remove(m as Intermediaire);
                         break;
                 }
@@ -129,33 +130,26 @@ namespace tab_control
                 int index = ((DataGrid)sender).ItemContainerGenerator.IndexFromContainer(e.Row);
                 int colIndex = e.Column.DisplayIndex;
                 var result = (e.EditingElement as TextBox).Text.ToString();
+
                 switch (colIndex)
                 {
                     case 0:
                         m.Nom = result;
-                        userDao.update(m);
+                        userDao.update(m as Parent);
                         break;
                     case 1:
                         m.Prenom = result;
-                        userDao.update(m);
+                        userDao.update(m as Parent);
                         break;
                     case 2:
-                        m.Email = result;
-                        userDao.update(m);
+                        m.Gsm = result;
+                        userDao.update(m as Parent);
                         break;
                     case 3:
-                        m.Gsm = result;
-                        userDao.update(m);
-                        break;
-                    case 4:
                         ((Parent)m).NbEnfants = short.Parse(result);
-                        userDao.update(m);
+                        userDao.update(m as Parent);
                         break;
                 }              
-                //userDao.update(m);
-
-                Console.WriteLine("Okkkkkkkkkkkkkkkk");
-                
             }
             else
             {
@@ -183,29 +177,25 @@ namespace tab_control
                 {
                     case 0:
                         m.Nom = result;
-                        userDao.update(m);
+                        userDao.update(m as Babysitter);
                         break;
                     case 1:
                         m.Prenom = result;
-                        userDao.update(m);
+                        userDao.update(m as Babysitter);
                         break;
                     case 2:
-                        m.Email = result;
-                        userDao.update(m);
+                        m.Gsm = result;
+                        userDao.update(m as Babysitter);
                         break;
                     case 3:
-                        m.Gsm = result;
-                        userDao.update(m);
-                        break;
-                    case 4:
                         ((Babysitter)m).DateDispo = result;
                         //Console.WriteLine("testdate" + m.DateDispo);
-                        userDao.update(m);
+                        userDao.update(m as Babysitter);
                         //Console.WriteLine("test date après " + m.DateDispo);
                         break;
-                    case 5:
+                    case 4:
                         ((Babysitter)m).Confirm = bool.Parse(result);
-                        userDao.update(m);
+                        userDao.update(m as Babysitter);
                         break;
                 }
                // userDao.update(m);
@@ -239,19 +229,15 @@ namespace tab_control
                 {
                     case 0:
                         m.Nom = result;
-                        userDao.update(m);
+                        userDao.update(m as Intermediaire);
                         break;
                     case 1:
                         m.Prenom = result;
-                        userDao.update(m);
+                        userDao.update(m as Intermediaire);
                         break;
                     case 2:
-                        m.Email = result;
-                        userDao.update(m);
-                        break;
-                    case 3:
                         m.Gsm = result;
-                        userDao.update(m);
+                        userDao.update(m as Intermediaire);
                         break;
                 }
                 // userDao.update(m);
