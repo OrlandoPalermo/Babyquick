@@ -36,7 +36,6 @@ namespace tab_control
             users.Add(m);
             users.Add(m2);*/
 
-            Console.WriteLine("Je suis appelé !");
             listMail.ItemsSource = messages;
         }
 

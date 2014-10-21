@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:userControl="clr-namespace:tab_control"
         Title="MainWindow" Height="750" Width="1000" ResizeMode="NoResize">
-    <TabControl BorderThickness="0" Margin="-2">
+    <TabControl BorderThickness="0" Margin="-2" Name="optInter">
         <TabControl.Resources>
             <Style TargetType="TabItem">
 
@@ -27,7 +27,7 @@
             </Style>
         </TabControl.Resources>
 
-        <TabItem Header="Rechercher" Width="240">
+        <TabItem Header="Rechercher" Width="240" Name="rechercher">
             <StackPanel HorizontalAlignment="Center" Margin="78,0,76,0" Width="840">
                 <TextBox Width="500" Padding="10" Margin="0, 15, 0, 0" />
                 <DataGrid Width="700" Margin="15" Name="DBSearch" CanUserResizeColumns="False">
@@ -44,20 +44,12 @@
         <TabItem Header="Requêtes" Width="242">
             <StackPanel HorizontalAlignment="Center">
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="Rechercher Babysitter"></Button>
+                    <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="Rechercher Babysitter" Click="Button_Click" IsEnabled="False" Name="buttonRechercherB"></Button>
                     <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="On a oublié"></Button>
                     <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="On a oublié"></Button>
                 </WrapPanel>
-                <DataGrid>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Nom" Width="120" Binding="{Binding Nom}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Prénom" Width="120" Binding="{Binding Prenom}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="E-mail" Width="120" Binding="{Binding Email}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Nombre d'enfants" Width="125" Binding="{Binding NbEnfants}"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Date de début" Width="120"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Date de fin" Width="120"></DataGridTextColumn>
-                        <DataGridTextColumn Header="Babysitter assigné" Width="130"></DataGridTextColumn>
-                    </DataGrid.Columns>
+                <DataGrid Name="requetes" AutoGenerateColumns="True" SelectionChanged="requetes_SelectionChanged">
+           
                 </DataGrid>
             </StackPanel>
         </TabItem>

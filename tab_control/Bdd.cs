@@ -11,7 +11,7 @@ namespace tab_control
 
 namespace tab_control
 {
-    class Bdd
+    public class Bdd
     {
         private SqlConnection connexion;
         private static Bdd instance;

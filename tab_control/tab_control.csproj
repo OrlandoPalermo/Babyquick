@@ -99,6 +99,8 @@
     <Compile Include="Classes\Membre.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MessageDao.cs" />
+    <Compile Include="RendezVous.cs" />
+    <Compile Include="RendezVousDao.cs" />
     <Compile Include="UserControl1.xaml.cs">
       <DependentUpon>UserControl1.xaml</DependentUpon>
     </Compile>

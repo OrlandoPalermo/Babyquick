@@ -108,7 +108,6 @@ namespace tab_control
             command.Parameters.Add("@nb_enfants", SqlDbType.TinyInt).Value = m.NbEnfants;
             int rows = command.ExecuteNonQuery();
             bdd.getConnection().Close();
-            Console.WriteLine("Nombre de ligne modifiées : " + rows + "\nEmail utilisé : " + m.Email);
         }
 
         public void update(Babysitter m)
@@ -184,7 +183,7 @@ namespace tab_control
         public Membre getMembre(string email)
         {
             bdd.getConnection().Open();
-            SqlCommand command = new SqlCommand("SELECT id, nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE email = @email", bdd.getConnection());
+            SqlCommand command = new SqlCommand("SELECT id, nom, prenom, types_membre, gsm, email FROM Membre WHERE email = @email", bdd.getConnection());
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
             SqlDataReader r = command.ExecuteReader();
             Membre m = null;
@@ -210,6 +209,38 @@ namespace tab_control
                     m.Id = id;
                 }
             }
+            bdd.getConnection().Close();
+            return m;
+        }
+
+        public Membre getMembre(int id)
+        {
+            bdd.getConnection().Open();
+            SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE id = @id", bdd.getConnection());
+            command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+            SqlDataReader r = command.ExecuteReader();
+            Membre m = null;
+            if (r.HasRows)
+            {
+                while (r.Read())
+                {
+                    short type = short.Parse(r["types_membre"].ToString());
+
+                    switch (type)
+                    {
+                        case 0: return null;
+                        case 1:
+                           short nbE = short.Parse(r["nb_enfants"].ToString());
+                             m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
+                            break;
+                        case 2:
+                            m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
+                            break;
+                        case 3: return null;
+                    }
+                }
+            }
+            m.Id = id;
             bdd.getConnection().Close();
             return m;
         }

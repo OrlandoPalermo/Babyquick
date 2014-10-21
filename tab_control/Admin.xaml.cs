@@ -200,7 +200,6 @@ namespace tab_control
                 }
                // userDao.update(m);
 
-                Console.WriteLine("Okkkkkkkkkkkkkkkk");
                // Console.WriteLine("test date"+ m.DateDispo);
 
             }
@@ -242,7 +241,6 @@ namespace tab_control
                 }
                 // userDao.update(m);
 
-                Console.WriteLine("Okkkkkkkkkkkkkkkk");
                 // Console.WriteLine("test date"+ m.DateDispo);
 
             }
