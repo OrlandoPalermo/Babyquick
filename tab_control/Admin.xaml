@@ -101,7 +101,10 @@
         <TabItem Header="Mail" Width="200">
             <userControl:Mail></userControl:Mail>
         </TabItem>
-        <TabItem Header="Bonjour Admin !" Width="184">
+        <TabItem Width="184">
+            <TabItem.Header>
+                <TextBlock Text="{Binding Path=Nom}" Name="headerIden"></TextBlock>
+            </TabItem.Header>
             <userControl:UserControl1></userControl:UserControl1>
         </TabItem>
     </TabControl>

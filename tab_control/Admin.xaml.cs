@@ -31,8 +31,8 @@ namespace tab_control
 
         public Admin(AdminC admin)
         {
-            
             connectedMember = admin;
+            DataContext = admin;
             Mail.ConnectedMember = admin;
             fenetreActive = 1;
             Bdd bdd = Bdd.getInstance();

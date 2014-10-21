@@ -24,7 +24,8 @@ namespace tab_control
             
             InitializeComponent();
             connectedMember = inter;
-            
+            DataContext = inter;
+            Mail.ConnectedMember = inter;
         }
 
     }

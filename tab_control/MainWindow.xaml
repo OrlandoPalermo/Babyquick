@@ -64,7 +64,10 @@
         <TabItem Header="Mail" Width="242">
             <userControl:Mail></userControl:Mail>
         </TabItem>
-        <TabItem Header="Bonjour Alfred !" Width="260" HorizontalContentAlignment="Center">
+        <TabItem Width="260" HorizontalContentAlignment="Center">
+            <TabItem.Header>
+                <TextBlock Text="{Binding Path=Nom}"></TextBlock>
+            </TabItem.Header>
             <userControl:UserControl1 Width="1000">
 
             </userControl:UserControl1>

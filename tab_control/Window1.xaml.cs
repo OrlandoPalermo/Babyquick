@@ -68,6 +68,31 @@ namespace tab_control
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Les identifiants sont erronés !", "Erreur identifiants", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void email_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isInputCompleted())
+                buttonConnection.IsEnabled = true;
+            else
+                buttonConnection.IsEnabled = false;
+        }
+
+        public bool isInputCompleted()
+        {
+            return email.Text != "" && password.Text != ""; 
+        }
+
+        private void password_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (isInputCompleted())
+                buttonConnection.IsEnabled = true;
+            else
+                buttonConnection.IsEnabled = false;
         }
     }
 }

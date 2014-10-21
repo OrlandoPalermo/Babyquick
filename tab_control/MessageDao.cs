@@ -24,8 +24,8 @@ namespace tab_control
             SqlCommand req = new SqlCommand("INSERT INTO Message(sujet, contenu, id_envoyeur, id_receveur, vu) VALUES(@s, @c, @idEn, @idRe, 0)", bdd.getConnection());
             req.Parameters.Add("@s", SqlDbType.VarChar).Value = m.Sujet;
             req.Parameters.Add("@c", SqlDbType.VarChar).Value = m.Contenu;
-            req.Parameters.Add("@idEn", SqlDbType.Int).Value = m.IdReceveur;
-            req.Parameters.Add("@idRe", SqlDbType.Int).Value = m.IdEnvoyeur;
+            req.Parameters.Add("@idEn", SqlDbType.Int).Value = m.IdEnvoyeur;
+            req.Parameters.Add("@idRe", SqlDbType.Int).Value = m.IdReceveur;
 
             req.ExecuteNonQuery();
             bdd.getConnection().Close();
