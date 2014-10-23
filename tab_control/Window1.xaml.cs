@@ -41,7 +41,7 @@ namespace tab_control
             String emailM = email.Text as string;
             String truePassword = MDao.getPassword(emailM);
 
-            if (truePassword == password.Text)
+            if (truePassword == password.Password)
             {
                 Membre membre = MDao.getMembre(emailM);
 
@@ -84,10 +84,10 @@ namespace tab_control
 
         public bool isInputCompleted()
         {
-            return email.Text != "" && password.Text != ""; 
+            return email.Text != "" && password.Password != ""; 
         }
 
-        private void password_TextChanged(object sender, TextChangedEventArgs e)
+        private void password_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (isInputCompleted())
                 buttonConnection.IsEnabled = true;

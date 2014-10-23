@@ -75,13 +75,52 @@ namespace tab_control
                 int idReceveur = UDao.getId(email);
 
                 //TODO FAILLLLLE à cause du 0
-                if (idReceveur != 0 && idReceveur != null)
+                if (idReceveur != 0)
                 {
                     Message m = new Message(ConnectedMember.Id, idReceveur, sujet, contenu);
                     MDao.add(m);
                 }
                 
             }
+        }
+
+        private void Pseudo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Pseudo.Text.Length >= 2)
+            {
+                Bdd bdd = Bdd.getInstance();
+                UserDao UDao = new UserDao(bdd);
+
+                HelpEmail.ItemsSource = UDao.getEmail(Pseudo.Text);
+                HelpEmail.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                HelpEmail.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void HelpEmail_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Bdd bdd = Bdd.getInstance();
+                UserDao UDao = new UserDao(bdd);
+                String email = HelpEmail.SelectedItem.ToString();
+                if (email != null)
+                {
+                    Pseudo.Text = email;
+                    type_pers.Content = UDao.getTypeMembre(email);
+                    HelpEmail.Visibility = Visibility.Hidden;
+                }
+            
+            }
+            catch (Exception E)
+            {
+
+            }
+            
+           
         }
 
     }

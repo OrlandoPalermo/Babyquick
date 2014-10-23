@@ -262,5 +262,51 @@ namespace tab_control
             bdd.getConnection().Close();
             return id;
         }
+
+        public List<String> getEmail(String startMail)
+        {
+            List<String> emails = new List<String>();
+            bdd.getConnection().Open();
+            SqlCommand req = new SqlCommand("SELECT email FROM Membre WHERE email LIKE @mail", bdd.getConnection());
+            req.Parameters.Add("@mail", SqlDbType.VarChar).Value = "%" + startMail + "%";
+            SqlDataReader read = req.ExecuteReader();
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    emails.Add(read["email"] as string);
+                }
+            }
+            bdd.getConnection().Close();
+            return emails;
+        }
+
+        public String getTypeMembre(String email)
+        {
+            bdd.getConnection().Open();
+            SqlCommand req = new SqlCommand("SELECT types_membre FROM Membre WHERE email = @email", bdd.getConnection());
+            req.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
+            SqlDataReader read = req.ExecuteReader();
+            String typeM = "";
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    short type = short.Parse(read["types_membre"].ToString());
+
+                    switch (type)
+                    {
+                        case 0: typeM = "Admin"; break;
+                        case 1: typeM = "Parent"; break;
+                        case 2: typeM = "Babysitter"; break;
+                        case 3: typeM = "Intérmédiaire"; break;
+                    }
+                }
+            }
+
+            bdd.getConnection().Close();
+            return typeM;
+        }
     }
 }
