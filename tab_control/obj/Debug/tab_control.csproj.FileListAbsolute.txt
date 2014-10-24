@@ -152,3 +152,7 @@ H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Bab
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.g.resources
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Menu.baml
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Menu.g.cs
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\AboutUs.baml
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\AboutUs.g.cs

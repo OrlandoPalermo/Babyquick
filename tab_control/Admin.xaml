@@ -3,109 +3,112 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:userControl="clr-namespace:tab_control"
         Title="Admin" Height="600" Width="1000">
-    <TabControl Margin="-2">
-        <TabControl.Resources>
-            <Style TargetType="TabItem">
-                <Setter Property="BorderThickness" Value="1"></Setter>
-                <Setter Property="BorderBrush" Value="Black"></Setter>
-                <Setter Property="Background">
-                    <Setter.Value>
-                        <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                            <GradientStop Color="#FF250A0A" Offset="0"/>
-                            <GradientStop Color="#FF363232" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-                <Setter Property="Foreground" Value="White"></Setter>
-                <Setter Property="Padding" Value="20"></Setter>
-                <Style.Triggers>
-                    <Trigger Property="TabItem.IsSelected" Value="True">
-                        <Setter Property="Foreground" Value="Black"></Setter>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-        </TabControl.Resources>
-        <TabItem Header="Gérer utilisateurs" Width="600">
-            
-            <StackPanel>
-                
-                <WrapPanel HorizontalAlignment="Center" Margin="0, 10, 0, 10">
-                    <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Click="SuprimerMembre_Click"></Button>
-                </WrapPanel>
-                <TabControl Width="900" Name="bddAdmin">
-                    <TabControl.Resources>
-                        <Style TargetType="TabItem">
-                            <Setter Property="BorderThickness" Value="0"></Setter>
-                            
-                        </Style>
-                    </TabControl.Resources>
-                    <TabItem Header="Parents" Width="294" MouseUp="TabItem_MouseDown">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0" 
-                                  Name="ParentsBDD" AutoGenerateColumns="False" 
-                                  SelectionChanged="SelectionItem_Click"
-                                  CellEditEnding="ParentsBDD_CellEditEnding_1"
-                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                  ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                  Height="600">
-                          
-                                  
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Nb. enfants" Binding="{Binding NbEnfants}"></DataGridTextColumn>
-                            </DataGrid.Columns>
-                           
-                        </DataGrid>
-                    </TabItem>
-                    <TabItem Header="Babysitter" Width="294" MouseUp="TabItem_MouseDown">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0"
-                                  Name="BabysitterBDD" AutoGenerateColumns="False"
-                                  SelectionChanged="BabysitterBDD_SelectionChanged"
-                                  CellEditEnding="BabysitterBDD_CellEditEnding"
-                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                  ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                  Height="600">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Actif ?" Binding="{Binding Confirm}"></DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </TabItem>
-                    <TabItem Header="Intermédiaire" Width="300" MouseUp="TabItem_MouseDown">
-                        <DataGrid Width="800" Margin="0, 20, 0, 0"
-                                  AutoGenerateColumns="False"
-                                  Name="IntermediaireBDD"
-                                  SelectionChanged="IntermediaireBDD_SelectionChanged"
-                                  CellEditEnding="IntermediaireBDD_CellEditEnding"
-                                  ScrollViewer.VerticalScrollBarVisibility="Visible"
-                                  ScrollViewer.CanContentScroll="True"
-                                  ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                                  Height="600">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
-                                <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </TabItem>
-                </TabControl>
-                
-            </StackPanel>
-        </TabItem>
-        <TabItem Header="Mail" Width="200">
-            <userControl:Mail></userControl:Mail>
-        </TabItem>
-        <TabItem Width="184">
-            <TabItem.Header>
-                <TextBlock Text="{Binding Path=Nom}" Name="headerIden"></TextBlock>
-            </TabItem.Header>
-            <userControl:UserControl1></userControl:UserControl1>
-        </TabItem>
-    </TabControl>
+    <StackPanel>
+        <userControl:Menu></userControl:Menu>
+        <TabControl Margin="-2">
+            <TabControl.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="BorderThickness" Value="1"></Setter>
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FF250A0A" Offset="0"/>
+                                <GradientStop Color="#FF363232" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Foreground" Value="White"></Setter>
+                    <Setter Property="Padding" Value="20"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="TabItem.IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Black"></Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="Gérer utilisateurs" Width="600">
+
+                <StackPanel>
+
+                    <WrapPanel HorizontalAlignment="Center" Margin="0, 10, 0, 10">
+                        <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Click="SuprimerMembre_Click"></Button>
+                    </WrapPanel>
+                    <TabControl Width="900" Name="bddAdmin">
+                        <TabControl.Resources>
+                            <Style TargetType="TabItem">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+
+                            </Style>
+                        </TabControl.Resources>
+                        <TabItem Header="Parents" Width="294" MouseUp="TabItem_MouseDown">
+                            <DataGrid Width="800" Margin="0, 20, 0, 0" 
+                                      Name="ParentsBDD" AutoGenerateColumns="False" 
+                                      SelectionChanged="SelectionItem_Click"
+                                      CellEditEnding="ParentsBDD_CellEditEnding_1"
+                                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                      Height="600">
+
+
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Nb. enfants" Binding="{Binding NbEnfants}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="Babysitter" Width="294" MouseUp="TabItem_MouseDown">
+                            <DataGrid Width="800" Margin="0, 20, 0, 0"
+                                      Name="BabysitterBDD" AutoGenerateColumns="False"
+                                      SelectionChanged="BabysitterBDD_SelectionChanged"
+                                      CellEditEnding="BabysitterBDD_CellEditEnding"
+                                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                      Height="600">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Actif ?" Binding="{Binding Confirm}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                        <TabItem Header="Intermédiaire" Width="300" MouseUp="TabItem_MouseDown">
+                            <DataGrid Width="800" Margin="0, 20, 0, 0"
+                                      AutoGenerateColumns="False"
+                                      Name="IntermediaireBDD"
+                                      SelectionChanged="IntermediaireBDD_SelectionChanged"
+                                      CellEditEnding="IntermediaireBDD_CellEditEnding"
+                                      ScrollViewer.VerticalScrollBarVisibility="Visible"
+                                      ScrollViewer.CanContentScroll="True"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Visible"
+                                      Height="600">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </TabItem>
+                    </TabControl>
+
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Mail" Width="200">
+                <userControl:Mail></userControl:Mail>
+            </TabItem>
+            <TabItem Width="184">
+                <TabItem.Header>
+                    <TextBlock Text="{Binding Path=Nom}" Name="headerIden"></TextBlock>
+                </TabItem.Header>
+                <userControl:UserControl1></userControl:UserControl1>
+            </TabItem>
+        </TabControl>
+    </StackPanel>
 </Window>

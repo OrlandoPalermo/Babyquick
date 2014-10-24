@@ -91,11 +91,20 @@ namespace tab_control
                 Bdd bdd = Bdd.getInstance();
                 UserDao UDao = new UserDao(bdd);
 
-                HelpEmail.ItemsSource = UDao.getEmail(Pseudo.Text);
+                List<String> emails = UDao.getEmail(Pseudo.Text);
+
+                if (emails.Capacity == 0)
+                {
+                    emails.Add("Pas de résultat.");
+                }
+
+                HelpEmail.ItemsSource = emails;
                 HelpEmail.Visibility = Visibility.Visible;
+                
             }
             else
             {
+                HelpEmail.ItemsSource = null;
                 HelpEmail.Visibility = Visibility.Hidden;
             }
         }
@@ -111,6 +120,7 @@ namespace tab_control
                 {
                     Pseudo.Text = email;
                     type_pers.Content = UDao.getTypeMembre(email);
+                    HelpEmail.ItemsSource = null;
                     HelpEmail.Visibility = Visibility.Hidden;
                 }
             
