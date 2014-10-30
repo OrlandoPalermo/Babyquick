@@ -93,6 +93,7 @@
     </Compile>
     <Compile Include="Classes\AdminC.cs" />
     <Compile Include="Classes\Babysitter.cs" />
+    <Compile Include="Classes\DataNotification.cs" />
     <Compile Include="Classes\Demande.cs" />
     <Compile Include="Classes\Intermediaire.cs" />
     <Compile Include="Classes\Parent.cs" />
@@ -106,6 +107,9 @@
     </Compile>
     <Compile Include="Message.cs" />
     <Compile Include="MessageDao.cs" />
+    <Compile Include="Notification.xaml.cs">
+      <DependentUpon>Notification.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RendezVous.cs" />
     <Compile Include="RendezVousDao.cs" />
     <Compile Include="UserControl1.xaml.cs">
@@ -140,6 +144,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Notification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using tab_control.Classes;
 
 namespace tab_control
 {
@@ -128,9 +129,13 @@ namespace tab_control
                     Subject.Clear();
                     Contenu.Clear();
 
-                    MessageBox.Show("Votre mail a bien été envoyé !");
+                    Notification.createNotification(new DataNotification("Votre email a bien été envoyé !", DataNotification.SUCCESS));
                 }
-                
+
+            }
+            else
+            {
+                Notification.createNotification(new DataNotification("Merci de bien renseigner tous les champs !", DataNotification.INFORMATION));
             }
         }
 
@@ -195,12 +200,13 @@ namespace tab_control
                 Bdd bdd = Bdd.getInstance();
                 MessageDao mDao = new MessageDao(bdd);
 
-                mDao.delete(messageSelected.Id);
-                messages.Remove(messageSelected);
+               /* mDao.delete(messageSelected.Id);
+                messages.Remove(messageSelected);*/
             }
             else
             {
-                MessageBox.Show("Veuillez sélectionner un message !");
+                //MessageBox.Show("Veuillez sélectionner un message !");
+                Notification.createNotification(new DataNotification("Veuillez sélectionner un message !", DataNotification.INFORMATION));
             }
             
         }

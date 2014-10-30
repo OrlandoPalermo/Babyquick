@@ -106,7 +106,7 @@ namespace tab_control
             }
             else
             {
-                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+                Notification.createNotification(new DataNotification("Merci de bien sélectionner une ligne de la base de données !", DataNotification.INFORMATION));
             }
         }
 
@@ -153,7 +153,7 @@ namespace tab_control
             }
             else
             {
-                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+                Notification.createNotification(new DataNotification("Merci de bien sélectionner une ligne de la base de données !", DataNotification.INFORMATION));
             }
 
         }
@@ -205,7 +205,7 @@ namespace tab_control
             }
             else
             {
-                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+                Notification.createNotification(new DataNotification("Merci de bien sélectionner une ligne de la base de données !", DataNotification.INFORMATION));
             }
         }
 
@@ -246,7 +246,7 @@ namespace tab_control
             }
             else
             {
-                MessageBox.Show("Merci de sélectionner une ligne de la base de données !");
+                Notification.createNotification(new DataNotification("Merci de bien sélectionner une ligne de la base de données !", DataNotification.INFORMATION));
             }
         }
 
