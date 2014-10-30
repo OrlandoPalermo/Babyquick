@@ -268,8 +268,11 @@ namespace tab_control
             }
         }
 
-        
-
+        public AdminC ConnectedMember
+        {
+            get { return connectedMember; }
+            set { connectedMember = value; }
+        }
 
     }
 }

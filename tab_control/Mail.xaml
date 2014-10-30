@@ -13,13 +13,14 @@
     <WrapPanel>
         <StackPanel Orientation="Vertical" MinWidth="200">
             <Label Content="Boite de réception"></Label>
-            <ListBox x:Name="listMail" DisplayMemberPath="Sujet" SelectionChanged="listMail_SelectionChanged"></ListBox>
+            <Button Name="Refresh" Click="Refresh_Click" Content="Rafraichir la liste"></Button>
+            <ListBox Name="listMail" DisplayMemberPath="Sujet" SelectionChanged="listMail_SelectionChanged"></ListBox>
         </StackPanel>
         
         <TabControl>
             <TabItem Header="Boite de réception">
                 <StackPanel HorizontalAlignment="Center">
-                    <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Width="100" HorizontalAlignment="Right" ToolTip="Supprime l'email sélectionné"></Button>
+                    <Button Name="SuprimerMembre" Content="Supprimer" Padding="10" Background="Tomato" Foreground="White" Width="100" HorizontalAlignment="Right" ToolTip="Supprime l'email sélectionné" Click="SuprimerMembre_Click"></Button>
                     
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label Content="De: "></Label>

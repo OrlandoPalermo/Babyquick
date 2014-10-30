@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace tab_control
 {
@@ -23,20 +25,22 @@ namespace tab_control
    public partial class Mail : UserControl
     {
         private static Membre connectedMember;
-        private Membre m,m2;
         private static ObservableCollection<Message> messages = new ObservableCollection<Message>();
-       
+        private Message messageSelected;
         public Mail()
         {
             InitializeComponent();
-           /* m = new Membre("Alexandre", "prenom", "gsm", "alexandrebrosteau@gmail.com", 1, 0, "10/10/2014", "a");
-            m2 = new Membre("Orlando", "poop", "0475235263", "orlandoPalerm@gmail.com", 1, 0, "12/10/2014", "b");
-
-
-            users.Add(m);
-            users.Add(m2);*/
 
             listMail.ItemsSource = messages;
+
+            //Permet de modifier la liste automatiquement toutes les 10 secondes
+            Timer timer = new Timer(10000);
+            timer.Elapsed += (source, e) =>
+            {
+                updateListMail();
+            };
+            timer.Enabled = true;
+            timer.Start();
         }
 
         public static Membre ConnectedMember
@@ -44,20 +48,58 @@ namespace tab_control
             get { return connectedMember; }
             set { 
                 connectedMember = value;
-                Bdd bdd = Bdd.getInstance();
-                MessageDao MDao = new MessageDao(bdd);
-                messages = MDao.getMessages(connectedMember.Id);
+                updateListMail();
             }
         }
 
-        private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Message mb = listMail.SelectedItem as Message;
-            de.Content =mb.Sujet;
+       /**
+        * Permet de rafraichir la liste des mails reçus quand on clique sur le bouton
+        * 
+        * */
+       public static void updateListMail() {
+           if (ConnectedMember != null)
+           {
+               Bdd bdd = Bdd.getInstance();
+               MessageDao MDao = new MessageDao(bdd);
 
-            mail.Text = mb.Contenu;
-            
-        }
+               ObservableCollection<Message> listTmp = MDao.getMessages(ConnectedMember.Id);
+
+               if (listTmp.Count > messages.Count)
+               {
+                   for (int i = messages.Count; i < listTmp.Count; i++)
+                   {
+                       //Permet de passer par le thread principal pour pouvoir modifier la liste
+                       System.Windows.Application.Current.Dispatcher.Invoke(
+                              DispatcherPriority.Normal,
+                              (Action)delegate()
+                              {
+                                  messages.Add(listTmp[i]);
+                              }
+                          );
+                   }
+               }
+
+           }
+       }
+
+       private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       {
+
+           messageSelected = listMail.SelectedItem as Message;
+           Console.WriteLine(listMail.SelectedItem);
+           //Permet d'éviter les plantages lors de la suppression
+           try
+           {
+               de.Content = messageSelected.Sujet;
+               mail.Text = messageSelected.Contenu;
+           }
+           catch (Exception E)
+           {
+               de.Content = "";
+               mail.Text = "";
+           }
+
+       }
 
         private void SubmitMail_Click(object sender, RoutedEventArgs e)
         {
@@ -79,6 +121,14 @@ namespace tab_control
                 {
                     Message m = new Message(ConnectedMember.Id, idReceveur, sujet, contenu);
                     MDao.add(m);
+                    MailSender mail = new MailSender(ConnectedMember.Email, email, sujet, contenu);
+                    mail.Send();
+
+                    Pseudo.Clear();
+                    Subject.Clear();
+                    Contenu.Clear();
+
+                    MessageBox.Show("Votre mail a bien été envoyé !");
                 }
                 
             }
@@ -131,6 +181,28 @@ namespace tab_control
             }
             
            
+        }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            updateListMail();
+        }
+
+        private void SuprimerMembre_Click(object sender, RoutedEventArgs e)
+        {
+            if (messageSelected != null)
+            {
+                Bdd bdd = Bdd.getInstance();
+                MessageDao mDao = new MessageDao(bdd);
+
+                mDao.delete(messageSelected.Id);
+                messages.Remove(messageSelected);
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner un message !");
+            }
+            
         }
 
     }

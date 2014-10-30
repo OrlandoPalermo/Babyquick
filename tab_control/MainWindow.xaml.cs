@@ -28,7 +28,6 @@ namespace tab_control
         public MainWindow(Intermediaire inter)
         {
             
-            InitializeComponent();
             connectedMember = inter;
             DataContext = inter;
             Mail.ConnectedMember = inter;
@@ -39,6 +38,8 @@ namespace tab_control
 
             ObservableCollection<RendezVous> listRendezVous = rDao.read();
             parents = new ObservableCollection<Parent>();
+
+            InitializeComponent();
 
             DataTable dataT = new DataTable("Test");
             dataT.Columns.Add("Nom", typeof(String));
@@ -70,6 +71,12 @@ namespace tab_control
             }
 
             
+        }
+
+        public Intermediaire ConnectedMember
+        {
+            get { return connectedMember; }
+            set { connectedMember = value; }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
