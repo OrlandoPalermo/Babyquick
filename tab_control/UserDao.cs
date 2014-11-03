@@ -65,6 +65,7 @@ namespace tab_control
                              break;
                         case 2:
                              m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
+                             ((Babysitter)m).Confirm = ((r["confirm"].ToString() == "1") ? true : false);
                              break;
                         case 3:
                             m = new Intermediaire(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["password"] as string);
@@ -115,7 +116,7 @@ namespace tab_control
             bdd.getConnection().Open();
 
             string requete = "UPDATE Membre "
-            + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo " +
+            + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo, confirm = @confirm " +
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
@@ -124,7 +125,7 @@ namespace tab_control
             command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
             command.Parameters.Add("@date_dispo", SqlDbType.VarChar).Value = ((m.DateDispo == null) ? "" : m.DateDispo);
-
+            command.Parameters.Add("@confirm", SqlDbType.TinyInt).Value = (m.Confirm) ? 1 : 0;
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
@@ -145,6 +146,19 @@ namespace tab_control
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
         
             command.CommandType = CommandType.Text;
+            command.ExecuteNonQuery();
+            bdd.getConnection().Close();
+        }
+
+        public void setPassword(string password)
+        {
+            bdd.getConnection().Open();
+
+            string requete = "UPDATE Membre SET password=@password WHERE email = @email";
+
+            SqlCommand command = new SqlCommand(requete, bdd.getConnection());
+            command.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
         }

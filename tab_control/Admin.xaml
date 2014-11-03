@@ -62,7 +62,23 @@
                             </DataGrid>
                         </TabItem>
                         <TabItem Header="Babysitter" Width="294" MouseUp="TabItem_MouseDown">
-                            <DataGrid Width="800" Margin="0, 20, 0, 0"
+                            <StackPanel>
+                                <WrapPanel HorizontalAlignment="center" >
+                                <Button Content="Non Actif"
+                                        Name="nonActif"
+                                        ToolTip="Affiche les babysitter pas encore actifs" 
+                                        HorizontalAlignment="Center" Width="120" Height="30" 
+                                        Background="Brown" Foreground="White"
+                                        Click="nonActif_Click"></Button>
+                                    <Button Content="Tous les babysitters"
+                                            Name="tousBaby"
+                                            ToolTip="Affiche les babysitter actifs/non actif" 
+                                            HorizontalAlignment="Center" Width="120" Height="30" 
+                                            Background="Brown" Foreground="White"
+                                            Click="tousBaby_Click"></Button>
+                                    
+                                </WrapPanel>
+                                <DataGrid Width="800" Margin="0, 20, 0, 0"
                                       Name="BabysitterBDD" AutoGenerateColumns="False"
                                       SelectionChanged="BabysitterBDD_SelectionChanged"
                                       CellEditEnding="BabysitterBDD_CellEditEnding"
@@ -70,14 +86,16 @@
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
                                       Height="600">
+                                
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Actif ?" Binding="{Binding Confirm}"></DataGridTextColumn>
+                                    <DataGridCheckBoxColumn Header="Actif?" Binding="{Binding Confirm}"></DataGridCheckBoxColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
+                            </StackPanel>
                         </TabItem>
                         <TabItem Header="Intermédiaire" Width="300" MouseUp="TabItem_MouseDown">
                             <DataGrid Width="800" Margin="0, 20, 0, 0"

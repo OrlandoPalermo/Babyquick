@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using tab_control.Classes;
 
+
 namespace tab_control
 {
     /// <summary>
@@ -37,6 +38,7 @@ namespace tab_control
             fenetreActive = 1;
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
+            UserControl1.ConnectedMember = admin;
 
             /*Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
             Membre m2 = new Membre("al", "adin", "0474324195", "test@gmail.com", 1, 0, "10/10/2014", "a");
@@ -64,6 +66,7 @@ namespace tab_control
                         break;
                     case 2:
                         babysitters.Add(me as Babysitter);
+                        Console.WriteLine(((Babysitter)me).Confirm);
                         break;
 
                     case 3:
@@ -172,29 +175,34 @@ namespace tab_control
 
                 int index = ((DataGrid)sender).ItemContainerGenerator.IndexFromContainer(e.Row);
                 int colIndex = e.Column.DisplayIndex;
-                var result = (e.EditingElement as TextBox).Text.ToString();
+                
+               
                 switch (colIndex)
                 {
                     case 0:
+                        var result = (e.EditingElement as TextBox).Text.ToString();
                         m.Nom = result;
                         userDao.update(m as Babysitter);
                         break;
                     case 1:
+                        result = (e.EditingElement as TextBox).Text.ToString();
                         m.Prenom = result;
                         userDao.update(m as Babysitter);
                         break;
                     case 2:
+                        result = (e.EditingElement as TextBox).Text.ToString();
                         m.Gsm = result;
                         userDao.update(m as Babysitter);
                         break;
                     case 3:
+                        result = (e.EditingElement as TextBox).Text.ToString();
                         ((Babysitter)m).DateDispo = result;
                         //Console.WriteLine("testdate" + m.DateDispo);
                         userDao.update(m as Babysitter);
                         //Console.WriteLine("test date après " + m.DateDispo);
                         break;
                     case 4:
-                        ((Babysitter)m).Confirm = bool.Parse(result);
+                        ((Babysitter)m).Confirm = bool.Parse((e.EditingElement as CheckBox).IsChecked.ToString());
                         userDao.update(m as Babysitter);
                         break;
                 }
@@ -273,6 +281,29 @@ namespace tab_control
             get { return connectedMember; }
             set { connectedMember = value; }
         }
+
+        private void nonActif_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<Babysitter> nonActif = new ObservableCollection<Babysitter>();
+            foreach (Babysitter b in babysitters)
+            {
+              
+                if (b.Confirm == false)
+                { 
+                    nonActif.Add(b);
+                    this.BabysitterBDD.ItemsSource = nonActif;
+                   
+                }
+                
+            }
+        }
+
+        private void tousBaby_Click(object sender, RoutedEventArgs e)
+        {
+            this.BabysitterBDD.ItemsSource = babysitters;
+        }
+
+        
 
     }
 }

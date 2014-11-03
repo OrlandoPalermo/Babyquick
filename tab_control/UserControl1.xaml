@@ -59,16 +59,18 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="Ancien mot de passe:" Grid.Column="0" Grid.Row="0"></TextBlock>
-            <PasswordBox Width="200"  Grid.Row="0" Grid.Column="1"></PasswordBox>
+            <PasswordBox Width="200"  Grid.Row="0" Grid.Column="1" Name="old"></PasswordBox>
 
 
             <TextBlock Text="Nouveau mot de passe:" Grid.Column="0" Grid.Row="1"></TextBlock>
-            <PasswordBox Width="200" Grid.Row="1" Grid.Column="1"></PasswordBox>
+            <PasswordBox Width="200" Grid.Row="1" Grid.Column="1" Name="new1"></PasswordBox>
 
             <TextBlock Text="Confirmer le mot de passe:" Grid.Column="0" Grid.Row="2"></TextBlock>
-            <PasswordBox Width="200" Grid.Row="2" Grid.Column="1"></PasswordBox>
+            <PasswordBox Width="200" Grid.Row="2" Grid.Column="1" Name="new2"></PasswordBox>
         </Grid>
-        <Button Name="resetPassword" Content="Confirmer" Height="35" Width="200" HorizontalAlignment="Center" Margin="174, 0, 0, 0">
+        <Button Name="changePassword" Content="Confirmer" Height="35" Width="200" 
+                HorizontalAlignment="Center" Margin="174, 0, 0, 0"
+                Click="changePassword_Click">
  
         </Button>
     </StackPanel>
