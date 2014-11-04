@@ -21,7 +21,7 @@ namespace tab_control
             bdd.getConnection().Open();
             ObservableCollection<RendezVous> list = new ObservableCollection<RendezVous>();
 
-            SqlCommand req = new SqlCommand("SELECT * FROM RendezVous R INNER JOIN Demande D ON R.id_demande = D.id WHERE D.vu = 0", bdd.getConnection());
+            SqlCommand req = new SqlCommand("SELECT * FROM RendezVous WHERE vu = 0", bdd.getConnection());
             SqlDataReader reader = req.ExecuteReader();
 
             if (reader.HasRows)
@@ -29,10 +29,9 @@ namespace tab_control
                 while (reader.Read())
                 {
                     int idBabysitter = int.Parse(reader["id_babysitter"].ToString());
-                    int idDemande = int.Parse(reader["id_demande"].ToString());
                     int idMembre = int.Parse(reader["id_membre"].ToString());
 
-                    RendezVous rendezV = new RendezVous(reader["date_emission"] as string, reader["date_prevu"] as string, reader["date_fin"] as string, idDemande, idBabysitter, idMembre);
+                    RendezVous rendezV = new RendezVous(reader["date_emission"] as string, reader["date_prevu"] as string, reader["date_fin"] as string, idBabysitter, idMembre);
                     list.Add(rendezV);
                 }
             }
