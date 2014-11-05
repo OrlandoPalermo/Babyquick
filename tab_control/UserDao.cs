@@ -150,14 +150,16 @@ namespace tab_control
             bdd.getConnection().Close();
         }
 
-        public void setPassword(string password)
+        public void setPassword(string password,string email)
         {
             bdd.getConnection().Open();
 
             string requete = "UPDATE Membre SET password=@password WHERE email = @email";
+            
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
             command.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+            command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
 
             command.ExecuteNonQuery();
             bdd.getConnection().Close();
@@ -229,6 +231,7 @@ namespace tab_control
 
         public Membre getMembre(int id)
         {
+            bdd.getConnection().Close();
             bdd.getConnection().Open();
             SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE id = @id", bdd.getConnection());
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;

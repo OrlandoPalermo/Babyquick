@@ -31,6 +31,7 @@ namespace tab_control
             connectedMember = inter;
             DataContext = inter;
             Mail.ConnectedMember = inter;
+            UserControl1.ConnectedMember = inter;
 
             Bdd bdd = Bdd.getInstance();
             RendezVousDao rDao = new RendezVousDao(bdd);

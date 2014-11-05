@@ -5,7 +5,7 @@
         Title="Admin" Height="876" Width="1000" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <userControl:Menu DockPanel.Dock="Top"></userControl:Menu>
-        <TabControl Margin="-2" BorderThickness="0, 0, 0, 0" DockPanel.Dock="Top" Height="765">
+        <TabControl Margin="-2" BorderThickness="0, 0, 0, 0" DockPanel.Dock="Top" Height="600">
             <TabControl.Resources>
                 <Style TargetType="TabItem">
                     <Setter Property="BorderThickness" Value="1"></Setter>

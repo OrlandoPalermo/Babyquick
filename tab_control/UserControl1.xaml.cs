@@ -42,16 +42,19 @@ namespace tab_control
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
 
-
+            
 
             if (ConnectedMember != null)
             {
-                if (vOld == ConnectedMember.Password)
+               
+                if (vOld == uD.getPassword(ConnectedMember.Email))
                 {
-                    if (vNew == vNew2)
+                    if (vNew == vNew2 && vNew != uD.getPassword(ConnectedMember.Email))
                     {
+                        MessageBox.Show("test");
                         ConnectedMember.Password = vNew;
-                        uD.setPassword(vNew);
+                        uD.setPassword(vNew,connectedMember.Email);
+                        Notification.createNotification(new DataNotification("Mot de passe correctement modifié",DataNotification.INFORMATION));
                     }
                     else
                     {
@@ -66,5 +69,6 @@ namespace tab_control
             
 
         }
+
     }
 }
