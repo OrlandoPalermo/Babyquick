@@ -23,10 +23,10 @@
             </LinearGradientBrush>
         </StackPanel.Background>
         <StackPanel Background="White">
-            <TextBlock Text="Alfred" 
-                   FontSize="25" 
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,15">
+            <TextBlock  FontSize="25" 
+                        HorizontalAlignment="Center"
+                        Margin="0,0,0,15"
+                        x:Name="txtNomPrenom">
             </TextBlock>
             <TextBlock Text="Modification de votre mot de passe" 
                        FontSize="15" 

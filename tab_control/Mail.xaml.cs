@@ -200,8 +200,8 @@ namespace tab_control
                 Bdd bdd = Bdd.getInstance();
                 MessageDao mDao = new MessageDao(bdd);
 
-               /* mDao.delete(messageSelected.Id);
-                messages.Remove(messageSelected);*/
+                mDao.delete(messageSelected.Id);
+                messages.Remove(messageSelected);
             }
             else
             {

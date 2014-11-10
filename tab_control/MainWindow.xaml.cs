@@ -23,6 +23,7 @@ namespace tab_control
     {
         private Intermediaire connectedMember;
         private Babysitter babysitterRechercher;
+        private String dateDispo = "";
         private int idParentPourRecherche;
         private ObservableCollection<Parent> parents;
         public MainWindow(Intermediaire inter)
@@ -40,6 +41,8 @@ namespace tab_control
             ObservableCollection<RendezVous> listRendezVous = rDao.read();
             parents = new ObservableCollection<Parent>();
 
+            
+
             InitializeComponent();
 
             DataTable dataT = new DataTable("Test");
@@ -55,7 +58,7 @@ namespace tab_control
                 DataRow row = dataT.NewRow();
 
                 Membre p = uDao.getMembre(r.IdParent);
-                Membre b = uDao.getMembre(r.IdBabysitter);
+               // Membre b = uDao.getMembre(r.IdBabysitter);
 
                 row["Nom"] = p.Nom;
                 row["Prenom"] = p.Prenom;
@@ -63,7 +66,7 @@ namespace tab_control
                 row["Nombre d'enfants"] = ((Parent)p).NbEnfants;
                 row["Date de début"] = r.DatePrevu;
                 row["Date de fin"] = r.Datefin;
-                row["Babysitter assigné"] = b.Nom;
+               // row["Babysitter assigné"] = b.Nom;
 
                 dataT.Rows.Add(row);
 
@@ -80,13 +83,15 @@ namespace tab_control
             set { connectedMember = value; }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonRechercheBaby_Click(object sender, RoutedEventArgs e)
         {
+            
             optInter.SelectedIndex = 0;
         }
 
         private void requetes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
             try
             {
                 idParentPourRecherche = parents.ElementAt(requetes.SelectedIndex).Id;
@@ -97,6 +102,17 @@ namespace tab_control
             {
                 buttonRechercherB.IsEnabled = false;
             }
+        }
+
+        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+                Bdd bdd = Bdd.getInstance();
+                UserDao uD = new UserDao(bdd);
+                List<String> babyList;
+                babyList = uD.getDateDispo(search.Text);
+                DBSearch.ItemsSource = babyList;
+            
         }
 
     }

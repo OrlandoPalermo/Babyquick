@@ -26,6 +26,7 @@ namespace tab_control
         public UserControl1()
         {
             InitializeComponent();
+            txtNomPrenom.Text = ConnectedMember.Nom + " " + ConnectedMember.Prenom;
         }
         public static Membre ConnectedMember
         {
@@ -58,7 +59,7 @@ namespace tab_control
                     }
                     else
                     {
-                        Notification.createNotification(new DataNotification("Les mots de passe ne correspondent pas", DataNotification.ERROR));
+                        Notification.createNotification(new DataNotification("Les mots de passe ne correspondent pas ou sont identiques à l'ancien", DataNotification.ERROR));
                     }
                 }
                 else

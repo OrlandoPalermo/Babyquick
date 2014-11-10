@@ -21,6 +21,7 @@ namespace newBabyQuick
             Type = 2;
             Email = email;
             Password = password;
+            
         }
 
         public Babysitter(String nom, String prenom, String gsm, String email)

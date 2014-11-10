@@ -291,9 +291,10 @@ namespace tab_control
                 if (b.Confirm == false)
                 { 
                     nonActif.Add(b);
-                    this.BabysitterBDD.ItemsSource = nonActif;
+                    
                    
                 }
+                this.BabysitterBDD.ItemsSource = nonActif;
                 
             }
         }

@@ -299,6 +299,27 @@ namespace tab_control
             return emails;
         }
 
+        public List<String> getDateDispo(String startDate)
+        {
+            List<String> dateDispo = new List<String>();
+            bdd.getConnection().Open();
+            SqlCommand req = new SqlCommand("SELECT date_dispo FROM Membre WHERE date_dispo LIKE @date",bdd.getConnection());
+            req.Parameters.Add("@date", SqlDbType.VarChar).Value = "%" + startDate + "%";
+
+            SqlDataReader read = req.ExecuteReader();
+
+            if (read.HasRows)
+            {
+                while (read.Read())
+                {
+                    dateDispo.Add(read["date_dispo"].ToString());
+                    Console.WriteLine(dateDispo);
+                }
+            }
+            bdd.getConnection().Close();
+            return dateDispo;
+        }
+
         public String getTypeMembre(String email)
         {
             bdd.getConnection().Open();
