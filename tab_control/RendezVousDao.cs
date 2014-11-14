@@ -39,49 +39,6 @@ namespace tab_control
             bdd.getConnection().Close();
             return list;
         }
-
-        //public String getDateDebut(int id)
-        //{
-        //    bdd.getConnection().Open();
-        //    String dateDeb = "";
-
-        //    SqlCommand command = new SqlCommand("SELECT date_prevu FROM RendezVous WHERE id_membre = @id",bdd.getConnection());
-        //    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-        //    SqlDataReader r = command.ExecuteReader();
-
-        //    if (r.HasRows)
-        //    {
-        //        while (r.Read())
-        //        {
-        //            dateDeb = r["date_prevu"].ToString();
-        //        }
-        //    }
-        //    bdd.getConnection().Close();
-        //    return dateDeb;
-
-        //}
-
-        //public String getDateFin(int id)
-        //{
-           
-        //    bdd.getConnection().Open();
-        //    String dateFin = "";
-
-        //    SqlCommand command = new SqlCommand("SELECT date_prevu FROM RendezVous WHERE id_membre = @id",bdd.getConnection());
-        //    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
-        //    SqlDataReader r = command.ExecuteReader();
-
-        //    if (r.HasRows)
-        //    {
-        //        while (r.Read())
-        //        {
-        //            dateFin = r["date_prevu"].ToString();
-        //        }
-        //    }
-        //    bdd.getConnection().Close();
-        //    return dateFin;
-
-        //}
     }
 }
 

@@ -13,9 +13,8 @@ namespace newBabyQuick
     {
         private String dateDispo;
         private String dateFinDispo;
-
-      
         private bool confirm;
+
         public Babysitter(String nom, String prenom, String gsm, String email, String dateDispo, String dateFinDispo)
         {
             Nom = nom;

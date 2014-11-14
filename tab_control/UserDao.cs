@@ -64,7 +64,7 @@ namespace tab_control
                              m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
                              break;
                         case 2:
-                             m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string, r["date_fin_dispo"] as String);
+                             m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"].ToString(), r["date_fin_dispo"].ToString());
                              ((Babysitter)m).Confirm = ((r["confirm"].ToString() == "1") ? true : false);
                              break;
                         case 3:
@@ -116,7 +116,7 @@ namespace tab_control
             bdd.getConnection().Open();
 
             string requete = "UPDATE Membre "
-            + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo, confirm = @confirm " +
+            + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo, date_fin_dispo=@date_fin_dispo, confirm = @confirm " +
             " WHERE email = @email";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
@@ -124,7 +124,8 @@ namespace tab_control
             command.Parameters.Add("@prenom", SqlDbType.VarChar).Value = m.Prenom;
             command.Parameters.Add("@gsm", SqlDbType.VarChar).Value = m.Gsm;
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = m.Email;
-            command.Parameters.Add("@date_dispo", SqlDbType.VarChar).Value = ((m.DateDispo == null) ? "" : m.DateDispo);
+            command.Parameters.Add("@date_dispo", SqlDbType.Date).Value = m.DateDispo;/*((m.DateDispo == null) ? "" : m.DateDispo);*/
+            command.Parameters.Add("@date_fin_dispo", SqlDbType.Date).Value = m.DateFinDispo;
             command.Parameters.Add("@confirm", SqlDbType.TinyInt).Value = (m.Confirm) ? 1 : 0;
             command.CommandType = CommandType.Text;
             command.ExecuteNonQuery();
@@ -331,7 +332,6 @@ namespace tab_control
             bdd.getConnection().Open();
 
             List<Babysitter> babyDispo = new List<Babysitter>();
-            //SqlCommand req = new SqlCommand("SELECT * FROM Membre WHERE types_membre = 2 AND date_dispo BETWEEN @dateD AND @dateF",bdd.getConnection());
             SqlCommand req = new SqlCommand("SELECT nom, prenom , gsm, email, types_membre, date_dispo,date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo <= @dateD AND date_fin_dispo >= @dateF)", bdd.getConnection());
             req.Parameters.Add("@dateD", SqlDbType.Date).Value = dateDeb;
             req.Parameters.Add("@dateF", SqlDbType.Date).Value = dateFin;
@@ -340,10 +340,9 @@ namespace tab_control
             if (r.HasRows){
                 while(r.Read())
                 {
-                    Babysitter bb = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string, r["date_fin_dispo"] as String);
+                    Babysitter bb = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"].ToString(), r["date_fin_dispo"].ToString());
                     
                     babyDispo.Add(bb);
-                    Console.WriteLine(bb);
                     
                 }
             }

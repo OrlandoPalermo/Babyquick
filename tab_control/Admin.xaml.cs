@@ -40,21 +40,14 @@ namespace tab_control
             UserDao uD = new UserDao(bdd);
             UserControl1.ConnectedMember = admin;
 
-            /*Membre m = new Membre("Jack", "Border", "0496323522", "borderlands_@gmail.com", 1, 0, "10/10/2014", "a");
-            Membre m2 = new Membre("al", "adin", "0474324195", "test@gmail.com", 1, 0, "10/10/2014", "a");
-            Membre baby1 = new Membre("baby", "sitter", "0474324195", "baby1@gmail.com", 2, 0, "10/12/2014", "test");
-            Membre inter = new Membre("inter", "test", "0495123563", "inter@gmail.com", 3, 0, "10/05/2012", "test");
-           
-            uD.add(m);
-            uD.add(m2);
-            uD.add(baby1);
-            uD.add(inter);*/
+            
             List<Membre> membres = uD.findAll();
             
             parents       = new ObservableCollection<Parent>();
             babysitters   = new ObservableCollection<Babysitter>();
             intermediaire = new ObservableCollection<Intermediaire>();
             InitializeComponent();
+            
             
 
             foreach (Membre me in membres)
@@ -66,7 +59,6 @@ namespace tab_control
                         break;
                     case 2:
                         babysitters.Add(me as Babysitter);
-                        Console.WriteLine(((Babysitter)me).Confirm);
                         break;
 
                     case 3:
@@ -74,6 +66,8 @@ namespace tab_control
                         break;
                 }
             }
+
+            
 
 // Charge le dataGrid avec la liste. 
             this.ParentsBDD.ItemsSource = parents;
@@ -202,6 +196,11 @@ namespace tab_control
                         //Console.WriteLine("test date après " + m.DateDispo);
                         break;
                     case 4:
+                        result = (e.EditingElement as TextBox).Text.ToString();
+                        ((Babysitter)m).DateFinDispo = result;
+                        userDao.update(m as Babysitter);
+                        break;
+                    case 5:
                         ((Babysitter)m).Confirm = bool.Parse((e.EditingElement as CheckBox).IsChecked.ToString());
                         userDao.update(m as Babysitter);
                         break;

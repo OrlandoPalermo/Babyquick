@@ -91,8 +91,8 @@
                                     <DataGridTextColumn Header="Nom" Binding="{Binding Nom}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Prenom" Binding="{Binding Prenom}"></DataGridTextColumn>
                                     <DataGridTextColumn Header="Gsm" Binding="{Binding Gsm}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
-                                    <DataGridTextColumn Header="Date fin dispo" Binding="{Binding DateFinDispo}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Date dispo" Binding="{Binding DateDispo}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Date fin dispo" Binding="{Binding DateFinDispo}"></DataGridTextColumn>
                                     <DataGridCheckBoxColumn Header="Actif?" Binding="{Binding Confirm}"></DataGridCheckBoxColumn>
                                 </DataGrid.Columns>
                             </DataGrid>
