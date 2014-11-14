@@ -32,7 +32,7 @@ namespace tab_control
                     
                     int idMembre = int.Parse(reader["id_membre"].ToString());
 
-                    RendezVous rendezV = new RendezVous(reader["date_emission"] as string, reader["date_prevu"] as string, reader["date_fin"] as string, 0, idMembre);
+                    RendezVous rendezV = new RendezVous(reader["date_emission"].ToString(), reader["date_prevu"].ToString(), reader["date_fin"].ToString(), 0, idMembre);
                     list.Add(rendezV);
                 }
             }
@@ -40,24 +40,48 @@ namespace tab_control
             return list;
         }
 
-        public List<String> getDatePrevu(String startDate)
-        {
-            List<String> dateDispo = new List<string>();
-            bdd.getConnection().Open();
-            SqlCommand req = new SqlCommand("SELECT date_prevu FROM RendezVous WHERE date_prepvu LIKE @date", bdd.getConnection());
-            req.Parameters.Add("@date", SqlDbType.VarChar).Value = "%" + startDate + "%";
+        //public String getDateDebut(int id)
+        //{
+        //    bdd.getConnection().Open();
+        //    String dateDeb = "";
 
-            SqlDataReader read = req.ExecuteReader();
+        //    SqlCommand command = new SqlCommand("SELECT date_prevu FROM RendezVous WHERE id_membre = @id",bdd.getConnection());
+        //    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+        //    SqlDataReader r = command.ExecuteReader();
 
-            if (read.HasRows)
-            {
-                while (read.Read())
-                {
-                    dateDispo.Add(read["date_prevu"] as String);
-                }
-            }
-            bdd.getConnection().Close();
-            return dateDispo;
-        }
+        //    if (r.HasRows)
+        //    {
+        //        while (r.Read())
+        //        {
+        //            dateDeb = r["date_prevu"].ToString();
+        //        }
+        //    }
+        //    bdd.getConnection().Close();
+        //    return dateDeb;
+
+        //}
+
+        //public String getDateFin(int id)
+        //{
+           
+        //    bdd.getConnection().Open();
+        //    String dateFin = "";
+
+        //    SqlCommand command = new SqlCommand("SELECT date_prevu FROM RendezVous WHERE id_membre = @id",bdd.getConnection());
+        //    command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+        //    SqlDataReader r = command.ExecuteReader();
+
+        //    if (r.HasRows)
+        //    {
+        //        while (r.Read())
+        //        {
+        //            dateFin = r["date_prevu"].ToString();
+        //        }
+        //    }
+        //    bdd.getConnection().Close();
+        //    return dateFin;
+
+        //}
     }
 }
+

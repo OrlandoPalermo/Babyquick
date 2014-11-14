@@ -64,7 +64,7 @@ namespace tab_control
                              m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
                              break;
                         case 2:
-                             m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
+                             m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string, r["date_fin_dispo"] as String);
                              ((Babysitter)m).Confirm = ((r["confirm"].ToString() == "1") ? true : false);
                              break;
                         case 3:
@@ -233,7 +233,7 @@ namespace tab_control
         {
             bdd.getConnection().Close();
             bdd.getConnection().Open();
-            SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants FROM Membre WHERE id = @id", bdd.getConnection());
+            SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants, date_fin_dispo FROM Membre WHERE id = @id", bdd.getConnection());
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;
             SqlDataReader r = command.ExecuteReader();
             Membre m = null;
@@ -251,7 +251,7 @@ namespace tab_control
                              m = new Parent(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, nbE);
                             break;
                         case 2:
-                            m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string);
+                            m = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string, r["date_fin_dispo"] as String);
                             break;
                         case 3: return null;
                     }
@@ -299,27 +299,6 @@ namespace tab_control
             return emails;
         }
 
-        public List<String> getDateDispo(String startDate)
-        {
-            List<String> dateDispo = new List<String>();
-            bdd.getConnection().Open();
-            SqlCommand req = new SqlCommand("SELECT date_dispo FROM Membre WHERE date_dispo LIKE @date",bdd.getConnection());
-            req.Parameters.Add("@date", SqlDbType.VarChar).Value = "%" + startDate + "%";
-
-            SqlDataReader read = req.ExecuteReader();
-
-            if (read.HasRows)
-            {
-                while (read.Read())
-                {
-                    dateDispo.Add(read["date_dispo"].ToString());
-                    Console.WriteLine(dateDispo);
-                }
-            }
-            bdd.getConnection().Close();
-            return dateDispo;
-        }
-
         public String getTypeMembre(String email)
         {
             bdd.getConnection().Open();
@@ -345,6 +324,31 @@ namespace tab_control
 
             bdd.getConnection().Close();
             return typeM;
+        }
+
+        public List<Babysitter> getBabyDispo(string dateDeb, string dateFin)
+        {
+            bdd.getConnection().Open();
+
+            List<Babysitter> babyDispo = new List<Babysitter>();
+            //SqlCommand req = new SqlCommand("SELECT * FROM Membre WHERE types_membre = 2 AND date_dispo BETWEEN @dateD AND @dateF",bdd.getConnection());
+            SqlCommand req = new SqlCommand("SELECT nom, prenom , gsm, email, types_membre, date_dispo,date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo <= @dateD AND date_fin_dispo >= @dateF)", bdd.getConnection());
+            req.Parameters.Add("@dateD", SqlDbType.Date).Value = dateDeb;
+            req.Parameters.Add("@dateF", SqlDbType.Date).Value = dateFin;
+            SqlDataReader r = req.ExecuteReader();
+
+            if (r.HasRows){
+                while(r.Read())
+                {
+                    Babysitter bb = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"] as string, r["date_fin_dispo"] as String);
+                    
+                    babyDispo.Add(bb);
+                    Console.WriteLine(bb);
+                    
+                }
+            }
+            bdd.getConnection().Close();
+            return babyDispo;
         }
     }
 }

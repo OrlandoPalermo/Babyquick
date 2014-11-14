@@ -22,8 +22,6 @@ namespace tab_control
     public partial class MainWindow : Window
     {
         private Intermediaire connectedMember;
-        private Babysitter babysitterRechercher;
-        private String dateDispo = "";
         private int idParentPourRecherche;
         private ObservableCollection<Parent> parents;
         public MainWindow(Intermediaire inter)
@@ -85,7 +83,20 @@ namespace tab_control
 
         private void ButtonRechercheBaby_Click(object sender, RoutedEventArgs e)
         {
-            
+            Bdd bdd = Bdd.getInstance();
+            RendezVousDao rdvDao = new RendezVousDao(bdd);
+            UserDao uD = new UserDao(bdd);
+            int indexSelected = requetes.SelectedIndex;
+            DataGridRow objectSelected = requetes.Items.GetItemAt(indexSelected) as DataGridRow;
+
+            String dateDeb = ((DataRowView)requetes.SelectedItem).Row["Date de début"].ToString();
+
+            String dateFin = ((DataRowView)requetes.SelectedItem).Row["Date de fin"].ToString();
+
+            List<Babysitter> listDispo = uD.getBabyDispo(dateDeb,dateFin);
+
+            DBSearch.ItemsSource = listDispo;
+
             optInter.SelectedIndex = 0;
         }
 
@@ -107,12 +118,11 @@ namespace tab_control
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-                Bdd bdd = Bdd.getInstance();
+               /* Bdd bdd = Bdd.getInstance();
                 UserDao uD = new UserDao(bdd);
-                List<String> babyList;
+                List<Babysitter> babyList;
                 babyList = uD.getDateDispo(search.Text);
-                DBSearch.ItemsSource = babyList;
-            
+                DBSearch.ItemsSource = babyList;*/
         }
 
     }

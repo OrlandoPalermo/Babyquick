@@ -53,7 +53,7 @@ namespace tab_control
         public ObservableCollection<Message> getMessages(int idReceveur)
         {
             ObservableCollection<Message> messages = new ObservableCollection<Message>();
-            bdd.getConnection().Close();
+           
             bdd.getConnection().Open();
 
             SqlCommand req = new SqlCommand("SELECT * FROM Message WHERE id_receveur = @id_receveur", bdd.getConnection());

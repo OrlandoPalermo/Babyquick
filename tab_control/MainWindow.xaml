@@ -31,13 +31,13 @@
             <TabItem Header="Rechercher" Width="240" Name="rechercher">
                 <StackPanel HorizontalAlignment="Center" Margin="78,0,76,0" Width="840">
                     <TextBox Width="500" Padding="10" Margin="0, 15, 0, 0" ToolTip="Indiquez la date de disponibilité" Name="search" TextChanged="search_TextChanged"/>
-                    <DataGrid Width="700" Margin="15" Name="DBSearch" CanUserResizeColumns="False">
+                    <DataGrid Width="750" Margin="15" Name="DBSearch" CanUserResizeColumns="False" AutoGenerateColumns="False">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Nom" Width="120"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Prénom" Width="120"></DataGridTextColumn>
-                            <DataGridTextColumn Header="email" Width="200"></DataGridTextColumn>
-                            <DataGridTextColumn Header="tel." Width="120"></DataGridTextColumn>
-                            <DataGridTextColumn Header="Date dispo." Width="140"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Nom" Width="120" Binding="{Binding Nom}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Prénom" Width="120" Binding="{Binding Prenom}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="email" Width="200" Binding="{Binding Email}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="tel." Width="120" Binding="{Binding Gsm}"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Date dispo." Width="140" Binding="{Binding DateDispo}"></DataGridTextColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
@@ -46,8 +46,7 @@
                 <StackPanel HorizontalAlignment="Center">
                     <WrapPanel HorizontalAlignment="Center">
                         <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="Rechercher Babysitter" Click="ButtonRechercheBaby_Click" IsEnabled="False" Name="buttonRechercherB"></Button>
-                        <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="On a oublié"></Button>
-                        <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="On a oublié"></Button>
+                        
                     </WrapPanel>
                     <DataGrid Name="requetes" AutoGenerateColumns="True" SelectionChanged="requetes_SelectionChanged">
 

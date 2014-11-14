@@ -38,6 +38,10 @@ namespace tab_control
 
         public void Open()
         {
+            if (connexion.State == ConnectionState.Open)
+            {
+                connexion.Close();
+            }
             connexion.Open();
         }
     }
