@@ -349,5 +349,29 @@ namespace tab_control
             bdd.getConnection().Close();
             return babyDispo;
         }
+
+        public List<Babysitter> getBabyDispo(string dateDeb)
+        {
+            bdd.getConnection().Open();
+
+            List<Babysitter> babyDispo = new List<Babysitter>();
+            SqlCommand req = new SqlCommand("SELECT nom, prenom , gsm, email, types_membre, date_dispo, date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo = @dateD )", bdd.getConnection());
+            req.Parameters.Add("@dateD", SqlDbType.Date).Value = dateDeb;
+
+            SqlDataReader r = req.ExecuteReader();
+
+            if (r.HasRows)
+            {
+                while (r.Read())
+                {
+                    Babysitter bb = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"].ToString(), r["date_fin_dispo"].ToString());
+
+                    babyDispo.Add(bb);
+
+                }
+            }
+            bdd.getConnection().Close();
+            return babyDispo;
+        }
     }
 }

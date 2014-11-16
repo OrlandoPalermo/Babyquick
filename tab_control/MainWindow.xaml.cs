@@ -38,7 +38,7 @@ namespace tab_control
 
             ObservableCollection<RendezVous> listRendezVous = rDao.read();
             parents = new ObservableCollection<Parent>();
-
+            
             
 
             InitializeComponent();
@@ -115,15 +115,15 @@ namespace tab_control
             }
         }
 
-        private void search_TextChanged(object sender, TextChangedEventArgs e)
+        private void searchCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-               /* Bdd bdd = Bdd.getInstance();
-                UserDao uD = new UserDao(bdd);
-                List<Babysitter> babyList;
-                babyList = uD.getDateDispo(search.Text);
-                DBSearch.ItemsSource = babyList;*/
-        }
+            Bdd bdd = Bdd.getInstance();
+            UserDao uD = new UserDao(bdd);
 
+            String date =searchCalendar.SelectedDate.ToString();
+            List<Babysitter> babyDispo = uD.getBabyDispo(date);
+
+            DBSearch.ItemsSource = babyDispo;
+        }
     }
 }
