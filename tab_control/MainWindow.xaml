@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:userControl="clr-namespace:tab_control"
-        Title="Intermédiaire" Height="730" Width="1150" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Intermédiaire" Height="730" Width="1128" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <userControl:Menu DockPanel.Dock="Top"></userControl:Menu>
         <TabControl BorderThickness="0" Margin="-2" Name="optInter" DockPanel.Dock="Top" Height="600">
@@ -29,8 +29,15 @@
             </TabControl.Resources>
 
             <TabItem Header="Rechercher" Width="240" Name="rechercher">
-                <StackPanel HorizontalAlignment="Center" Margin="78,0,76,0" Width="900">
-                    <DataGrid Width="850" Margin="15" x:Name="DBSearch" CanUserResizeColumns="False" AutoGenerateColumns="False">
+                <StackPanel HorizontalAlignment="Center" Margin="78,0,76,0" Width="840">
+                    <!--<TextBox Width="500" Padding="10" Margin="0, 15, 0, 0" ToolTip="Indiquez la date de disponibilité" Name="search" TextChanged="search_TextChanged"/>
+                    <Label Content="Choisissez la date de disponibilité" HorizontalAlignment="Center" FontSize="16" FontStyle="Normal"></Label>
+                    <Calendar Name="searchCalendar" SelectedDatesChanged="searchCalendar_SelectedDatesChanged" BorderBrush="Beige" BorderThickness="5" ></Calendar>-->
+                    <Button Name="envoyerDemander" Content="Envoyer une demande" 
+                            Click="envoyerDemander_Click" HorizontalAlignment="Center" Padding="10" 
+                            Background="Transparent" Foreground="LightGoldenrodYellow" Cursor="Hand"></Button>
+                    <DataGrid Width="900" Margin="15" x:Name="DBSearch" 
+                              CanUserResizeColumns="False" AutoGenerateColumns="False" SelectionChanged="DBSearch_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Nom" Width="120" Binding="{Binding Nom}"/>
                             <DataGridTextColumn Header="Prénom" Width="120" Binding="{Binding Prenom}"/>
@@ -48,7 +55,7 @@
                         <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="Rechercher Babysitter" Click="ButtonRechercheBaby_Click" IsEnabled="False" Name="buttonRechercherB"></Button>
 
                     </WrapPanel>
-                    <DataGrid Name="requetes" AutoGenerateColumns="True" SelectionChanged="requetes_SelectionChanged" Width="850">
+                    <DataGrid Name="requetes" AutoGenerateColumns="True" SelectionChanged="requetes_SelectionChanged">
 
                     </DataGrid>
                 </StackPanel>
