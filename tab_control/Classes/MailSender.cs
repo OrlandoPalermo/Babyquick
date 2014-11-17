@@ -29,7 +29,7 @@ namespace tab_control
 
             SmtpClient client = new SmtpClient("smtp.live.com", 587);
             client.EnableSsl = true;
-            client.Credentials = new NetworkCredential("babyquick@outlook.com", "helha!7946132536");
+            client.Credentials = new NetworkCredential("babyquick@outlook.com", "helha!794613");
             client.Send(message);
         }
         

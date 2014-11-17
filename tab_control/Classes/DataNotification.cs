@@ -20,7 +20,7 @@ namespace tab_control.Classes
 
         public DataNotification(String information, short type)
         {
-            Information = information;
+            Information = DateTime.UtcNow + " " + information;
             Type = type;
             
             

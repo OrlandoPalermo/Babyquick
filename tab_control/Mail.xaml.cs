@@ -38,7 +38,11 @@ namespace tab_control
             Timer timer = new Timer(10000);
             timer.Elapsed += (source, e) =>
             {
-                updateListMail();
+                bool newMail = updateListMail();
+                if (newMail)
+                {
+                    Notification.createNotification(new DataNotification("Vous avez reçu un nouveau message !", DataNotification.INFORMATION));
+                }
             };
             timer.Enabled = true;
             timer.Start();
@@ -57,7 +61,7 @@ namespace tab_control
         * Permet de rafraichir la liste des mails reçus quand on clique sur le bouton
         * 
         * */
-       public static void updateListMail() {
+       public static bool updateListMail() {
            if (ConnectedMember != null)
            {
                Bdd bdd = Bdd.getInstance();
@@ -67,6 +71,7 @@ namespace tab_control
 
                if (listTmp.Count > messages.Count)
                {
+                   
                    for (int i = messages.Count; i < listTmp.Count; i++)
                    {
                        //Permet de passer par le thread principal pour pouvoir modifier la liste
@@ -78,9 +83,12 @@ namespace tab_control
                               }
                           );
                    }
+                   return true;
                }
+               return false;
 
            }
+           return false;
        }
 
        private void listMail_SelectionChanged(object sender, SelectionChangedEventArgs e)

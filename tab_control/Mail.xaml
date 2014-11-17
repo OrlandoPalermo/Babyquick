@@ -34,7 +34,7 @@
                              Name="mail" 
                              MaxHeight="500" 
                              MaxWidth="700" 
-                             Height="500" 
+                             Height="250" 
                              Width="700" 
                              AcceptsReturn="True" 
                              IsReadOnly="True"
@@ -55,7 +55,7 @@
                         <TextBox Name="Subject" Width="600"></TextBox>
                     </WrapPanel>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
-                        <TextBox Height="300" Width="700" AcceptsReturn="True" Name="Contenu"></TextBox>
+                        <TextBox Height="200" Width="700" AcceptsReturn="True" Name="Contenu"></TextBox>
                     </WrapPanel>
                     <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0, 10, 0, 0">
                         <Button Name="SubmitMail" Content="Envoyer" Padding="10" Click="SubmitMail_Click"></Button>
