@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="600">
-    <WrapPanel Background="{Binding Background}" Name="ContentNotification">
-        <Label Content="{Binding Information}" FontSize="24"></Label>
+    <WrapPanel Name="ContentNotification" HorizontalAlignment="Stretch">
+        <ListBox Name="Notifications" HorizontalAlignment="Stretch" Width="990" FontSize="24" DisplayMemberPath="Information" Height="50" Background="{Binding Path=Background}"></ListBox>
     </WrapPanel>
 </UserControl>

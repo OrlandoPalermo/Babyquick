@@ -14,7 +14,7 @@
         <StackPanel Orientation="Vertical" MinWidth="200">
             <Label Content="Boite de réception"></Label>
             <Button Name="Refresh" Click="Refresh_Click" Content="Rafraichir la liste"></Button>
-            <ListBox Name="listMail" DisplayMemberPath="Sujet" SelectionChanged="listMail_SelectionChanged"></ListBox>
+            <ListBox Name="listMail" DisplayMemberPath="Sujet" SelectionChanged="listMail_SelectionChanged" Height="300"></ListBox>
         </StackPanel>
         
         <TabControl>
