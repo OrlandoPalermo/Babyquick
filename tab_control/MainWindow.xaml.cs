@@ -114,16 +114,5 @@ namespace tab_control
                 buttonRechercherB.IsEnabled = false;
             }
         }
-
-        private void searchCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Bdd bdd = Bdd.getInstance();
-            UserDao uD = new UserDao(bdd);
-
-            String date =searchCalendar.SelectedDate.ToString();
-            List<Babysitter> babyDispo = uD.getBabyDispo(date);
-
-            DBSearch.ItemsSource = babyDispo;
-        }
     }
 }
