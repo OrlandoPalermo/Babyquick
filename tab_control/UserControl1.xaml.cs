@@ -48,11 +48,10 @@ namespace tab_control
             if (ConnectedMember != null)
             {
                
-                if (vOld == uD.getPassword(ConnectedMember.Email))
+                if (uD.compare(ConnectedMember.Email, vOld))
                 {
-                    if (vNew == vNew2 && vNew != uD.getPassword(ConnectedMember.Email))
+                    if (vNew == vNew2 && !uD.compare(ConnectedMember.Email, vNew))
                     {
-                        MessageBox.Show("test");
                         ConnectedMember.Password = vNew;
                         uD.setPassword(vNew,connectedMember.Email);
                         Notification.createNotification(new DataNotification("Mot de passe correctement modifié",DataNotification.INFORMATION));

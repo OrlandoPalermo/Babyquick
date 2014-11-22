@@ -20,7 +20,7 @@ namespace tab_control
             this.bdd = bdd;
         }
 
-        public bool Login(String email, String password)
+        public bool compare(String email, String password)
         {
             bdd.Open();
 
@@ -177,7 +177,7 @@ namespace tab_control
         {
             bdd.Open();
 
-            string requete = "UPDATE Membre SET password=@password WHERE email = @email";
+            string requete = "UPDATE Membre SET password= HASHBYTES('SHA1', @password) WHERE email = @email";
             
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());

@@ -77,7 +77,7 @@ namespace tab_control
             UserDao MDao = new UserDao(bdd);
             String emailM = email.Text as string;
 
-            if (MDao.Login(emailM, password.Password))
+            if (MDao.compare(emailM, password.Password))
             {
                 Membre membre = MDao.getMembre(emailM);
 
