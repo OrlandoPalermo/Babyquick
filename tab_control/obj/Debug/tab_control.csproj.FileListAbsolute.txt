@@ -134,7 +134,6 @@ H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Bab
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.dll
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.xml
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.xml
-H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Mail.baml
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\UserControl1.baml
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Window1.baml
@@ -203,3 +202,4 @@ D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Deskto
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.g.resources
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache

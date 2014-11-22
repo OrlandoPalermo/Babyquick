@@ -76,9 +76,8 @@ namespace tab_control
             Bdd bdd = Bdd.getInstance();
             UserDao MDao = new UserDao(bdd);
             String emailM = email.Text as string;
-            String truePassword = MDao.getPassword(emailM);
 
-            if (truePassword == password.Password)
+            if (MDao.Login(emailM, password.Password))
             {
                 Membre membre = MDao.getMembre(emailM);
 

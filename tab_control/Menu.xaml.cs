@@ -30,7 +30,9 @@ namespace tab_control
         {
             Window parent = Window.GetWindow(this);
             Window1 login = new Window1();
+            Bdd.getInstance().getConnection().Close();
             login.Show();
+            Mail.clean();
             parent.Close();   
         }
 

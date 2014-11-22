@@ -20,9 +20,31 @@ namespace tab_control
             this.bdd = bdd;
         }
 
+        public bool Login(String email, String password)
+        {
+            bdd.Open();
+
+            SqlCommand req = new SqlCommand("SELECT id FROM Membre WHERE email = @e AND password = HASHBYTES('SHA1', @p)", bdd.getConnection());
+            req.Parameters.Add("@e", SqlDbType.VarChar).Value = email;
+            req.Parameters.Add("@p", SqlDbType.VarChar).Value = password;
+
+            SqlDataReader reader = req.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                bdd.getConnection().Close();
+                return true;
+            }
+            else
+            {
+                bdd.getConnection().Close();
+                return false;
+            }
+        }
+
        /* public void add(Membre m)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             string requete = "INSERT INTO Membre"
                 + "(nom, prenom, gsm, email, types_membre, nb_enfants, date_dispo, password)"
                 + "VALUES(@nom, @prenom, @gsm, @email, @types_membre, @nb_enfants, @date_dispo, @password)";
@@ -45,7 +67,7 @@ namespace tab_control
         {
             List<Membre> membres = new List<Membre>();
             SqlDataReader r;
-            bdd.getConnection().Open();
+            bdd.Open();
             string requete = "SELECT * FROM Membre";
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
             r = command.ExecuteReader();
@@ -83,7 +105,7 @@ namespace tab_control
 
         public void delete(Membre m)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             string requete = "DELETE FROM Membre WHERE email = @mail";
 
             SqlCommand command = new SqlCommand(requete, bdd.getConnection());
@@ -97,7 +119,7 @@ namespace tab_control
         public void update(Parent m)
         {
             //TODO faire les répercutions sur la BDD Asp.net
-             bdd.getConnection().Open();
+             bdd.Open();
 
             string requete = "UPDATE Membre SET nom = @nom, prenom = @prenom, gsm = @gsm, nb_enfants = @nb_Enfants WHERE email = @email";
 
@@ -113,7 +135,7 @@ namespace tab_control
 
         public void update(Babysitter m)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
 
             string requete = "UPDATE Membre "
             + "SET nom=@nom, prenom=@prenom, gsm=@gsm, date_dispo = @date_dispo, date_fin_dispo=@date_fin_dispo, confirm = @confirm " +
@@ -134,7 +156,7 @@ namespace tab_control
 
         public void update(Intermediaire m)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
 
             string requete = "UPDATE Membre "
             + "SET nom=@nom, prenom=@prenom, gsm=@gsm" +
@@ -153,7 +175,7 @@ namespace tab_control
 
         public void setPassword(string password,string email)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
 
             string requete = "UPDATE Membre SET password=@password WHERE email = @email";
             
@@ -175,7 +197,7 @@ namespace tab_control
 
         public string getPassword(string email)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             string requete = "SELECT password FROM Membre WHERE email = @email";
             
             SqlDataReader reader;
@@ -199,7 +221,8 @@ namespace tab_control
 
         public Membre getMembre(string email)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
+           
             SqlCommand command = new SqlCommand("SELECT id, nom, prenom, types_membre, gsm, email FROM Membre WHERE email = @email", bdd.getConnection());
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
             SqlDataReader r = command.ExecuteReader();
@@ -233,7 +256,7 @@ namespace tab_control
         public Membre getMembre(int id)
         {
             bdd.getConnection().Close();
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand command = new SqlCommand("SELECT nom, prenom, types_membre, gsm, email, date_dispo, nb_enfants, date_fin_dispo FROM Membre WHERE id = @id", bdd.getConnection());
             command.Parameters.Add("@id", SqlDbType.Int).Value = id;
             SqlDataReader r = command.ExecuteReader();
@@ -265,7 +288,7 @@ namespace tab_control
 
         public int getId(string email)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand command = new SqlCommand("SELECT id FROM Membre WHERE email = @email", bdd.getConnection());
             command.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
             SqlDataReader r = command.ExecuteReader();
@@ -284,25 +307,34 @@ namespace tab_control
         public List<String> getEmail(String startMail)
         {
             List<String> emails = new List<String>();
-            bdd.getConnection().Open();
-            SqlCommand req = new SqlCommand("SELECT email FROM Membre WHERE email LIKE @mail", bdd.getConnection());
-            req.Parameters.Add("@mail", SqlDbType.VarChar).Value = "%" + startMail + "%";
-            SqlDataReader read = req.ExecuteReader();
-
-            if (read.HasRows)
+            try
             {
-                while (read.Read())
+                bdd.Open();
+                SqlCommand req = new SqlCommand("SELECT email FROM Membre WHERE email LIKE @mail", bdd.getConnection());
+                req.Parameters.Add("@mail", SqlDbType.VarChar).Value = "%" + startMail + "%";
+                SqlDataReader read = req.ExecuteReader();
+
+                if (read.HasRows)
                 {
-                    emails.Add(read["email"] as string);
+                    while (read.Read())
+                    {
+                        emails.Add(read["email"] as string);
+                    }
                 }
+                
             }
+            catch (Exception ErreurMail)
+            {
+                bdd.getConnection().Close();
+            }
+
             bdd.getConnection().Close();
             return emails;
         }
 
         public String getTypeMembre(String email)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand req = new SqlCommand("SELECT types_membre FROM Membre WHERE email = @email", bdd.getConnection());
             req.Parameters.Add("@email", SqlDbType.VarChar).Value = email;
             SqlDataReader read = req.ExecuteReader();
@@ -329,7 +361,7 @@ namespace tab_control
 
         public List<Babysitter> getBabyDispo(string dateDeb, string dateFin)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
            
             List<Babysitter> babyDispo = new List<Babysitter>();
             SqlCommand req = new SqlCommand("SELECT id, nom, prenom , gsm, email, types_membre, date_dispo,date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo <= @dateD AND date_fin_dispo >= @dateF)", bdd.getConnection());
@@ -354,7 +386,7 @@ namespace tab_control
 
        /* public List<Babysitter> getBabyDispo(string dateDeb)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
 
             List<Babysitter> babyDispo = new List<Babysitter>();
             SqlCommand req = new SqlCommand("SELECT nom, prenom , gsm, email, types_membre, date_dispo, date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo = @dateD )", bdd.getConnection());

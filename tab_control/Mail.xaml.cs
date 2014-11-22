@@ -34,8 +34,8 @@ namespace tab_control
 
             listMail.ItemsSource = messages;
 
-            //Permet de modifier la liste automatiquement toutes les 10 secondes
-            Timer timer = new Timer(10000);
+            //Permet de modifier la liste automatiquement toutes les minutes
+            Timer timer = new Timer(60000);
             timer.Elapsed += (source, e) =>
             {
                 bool newMail = updateListMail();
@@ -217,6 +217,11 @@ namespace tab_control
                 Notification.createNotification(new DataNotification("Veuillez sélectionner un message !", DataNotification.INFORMATION));
             }
             
+        }
+
+        public static void clean()
+        {
+            messages.Clear();
         }
 
     }

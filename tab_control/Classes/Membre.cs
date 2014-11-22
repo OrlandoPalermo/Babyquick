@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 namespace newBabyQuick
@@ -69,6 +70,16 @@ namespace newBabyQuick
 
             return Email == m.Email && Password == m.Password;
 
+        }
+
+        public static String getEncryptedPassword(String passwordToCrypt)
+        {
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(passwordToCrypt);
+            SHA1 sha = new SHA1CryptoServiceProvider();
+            byte[] password = sha.ComputeHash(bytes);
+
+            String passwordHashed = System.Text.Encoding.UTF8.GetString(password);
+            return passwordHashed;
         }
 
     }

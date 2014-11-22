@@ -19,7 +19,7 @@ namespace tab_control
 
         public ObservableCollection<RendezVous> read()
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             ObservableCollection<RendezVous> list = new ObservableCollection<RendezVous>();
 
             SqlCommand req = new SqlCommand("SELECT * FROM RendezVous WHERE id_babysitter IS NULL OR id_babysitter = 0", bdd.getConnection());
@@ -43,7 +43,7 @@ namespace tab_control
 
         public void demandeUpdate(int idBaby, int idDemande)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
 
             SqlCommand req = new SqlCommand("UPDATE RendezVous SET id_babysitter = @id WHERE id = @idDem", bdd.getConnection());
             req.Parameters.Add("@id", SqlDbType.Int).Value = idBaby;

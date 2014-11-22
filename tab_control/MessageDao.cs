@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using tab_control.Classes;
 
 namespace tab_control
 {
@@ -20,7 +21,7 @@ namespace tab_control
 
         public void add(Message m)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand req = new SqlCommand("INSERT INTO Message(sujet, contenu, id_envoyeur, id_receveur, vu) VALUES(@s, @c, @idEn, @idRe, 0)", bdd.getConnection());
             req.Parameters.Add("@s", SqlDbType.VarChar).Value = m.Sujet;
             req.Parameters.Add("@c", SqlDbType.VarChar).Value = m.Contenu;
@@ -34,7 +35,7 @@ namespace tab_control
 
         public void delete(int idMessage)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand req = new SqlCommand("DELETE FROM Message WHERE id = @id", bdd.getConnection());
             req.Parameters.Add("@id", SqlDbType.Int).Value = idMessage;
             req.ExecuteNonQuery();
@@ -43,7 +44,7 @@ namespace tab_control
 
         public void vu(int idMessage)
         {
-            bdd.getConnection().Open();
+            bdd.Open();
             SqlCommand req = new SqlCommand("UPDATE Message SET vu = 1 WHERE id = @id", bdd.getConnection());
             req.Parameters.Add("@id", SqlDbType.Int).Value = idMessage;
             req.ExecuteNonQuery();
@@ -53,8 +54,7 @@ namespace tab_control
         public ObservableCollection<Message> getMessages(int idReceveur)
         {
             ObservableCollection<Message> messages = new ObservableCollection<Message>();
-           
-            bdd.getConnection().Open();
+            bdd.Open();
 
             SqlCommand req = new SqlCommand("SELECT * FROM Message WHERE id_receveur = @id_receveur", bdd.getConnection());
             req.Parameters.Add("@id_receveur", SqlDbType.Int).Value = idReceveur;
@@ -81,6 +81,7 @@ namespace tab_control
                     messages.Add(m);
                 }
             }
+
 
             bdd.getConnection().Close();
             return messages;
