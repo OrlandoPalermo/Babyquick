@@ -35,7 +35,7 @@
                     <Calendar Name="searchCalendar" SelectedDatesChanged="searchCalendar_SelectedDatesChanged" BorderBrush="Beige" BorderThickness="5" ></Calendar>-->
                     <Button Name="envoyerDemander" Content="Envoyer une demande" 
                             Click="envoyerDemander_Click" HorizontalAlignment="Center" Padding="10" 
-                            Background="Transparent" Foreground="LightGoldenrodYellow" Cursor="Hand"></Button>
+                            Background="Transparent" Foreground="Brown" Cursor="Hand"></Button>
                     <DataGrid Width="900" Margin="15" x:Name="DBSearch" 
                               CanUserResizeColumns="False" AutoGenerateColumns="False" SelectionChanged="DBSearch_SelectionChanged">
                         <DataGrid.Columns>

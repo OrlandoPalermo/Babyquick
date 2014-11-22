@@ -170,3 +170,36 @@ E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_con
 E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\AboutUs.g.cs
 E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Menu.g.cs
 E:\Orlando\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\Notification.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\tab_control.exe.config
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.exe
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.pdb
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\tab_control.exe
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\tab_control.pdb
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\EntityFramework.dll
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.dll
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\EntityFramework.xml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\bin\Debug\EntityFramework.SqlServer.xml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\AboutUs.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Mail.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Menu.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Notification.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\UserControl1.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Window1.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\AboutUs.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Admin.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Mail.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\MainWindow.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Menu.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Notification.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\UserControl1.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Window1.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\App.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.cache
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.lref
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\Admin.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\MainWindow.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.g.resources
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache

@@ -9,7 +9,13 @@ namespace tab_control
     public class RendezVous
     {
         private String dateEmission, datePrevu, datefin;
-        int idBabysitter, idParent;
+        int idBabysitter, idParent, id;
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         short vu, accept;
 
         public RendezVous(String dateEmi, String datePre, String dateF, int idBa, int idP)

@@ -330,18 +330,20 @@ namespace tab_control
         public List<Babysitter> getBabyDispo(string dateDeb, string dateFin)
         {
             bdd.getConnection().Open();
-
+           
             List<Babysitter> babyDispo = new List<Babysitter>();
-            SqlCommand req = new SqlCommand("SELECT nom, prenom , gsm, email, types_membre, date_dispo,date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo <= @dateD AND date_fin_dispo >= @dateF)", bdd.getConnection());
+            SqlCommand req = new SqlCommand("SELECT id, nom, prenom , gsm, email, types_membre, date_dispo,date_fin_dispo FROM Membre WHERE types_membre = 2 AND id IN(SELECT id FROM Membre WHERE date_dispo <= @dateD AND date_fin_dispo >= @dateF)", bdd.getConnection());
             req.Parameters.Add("@dateD", SqlDbType.Date).Value = dateDeb;
             req.Parameters.Add("@dateF", SqlDbType.Date).Value = dateFin;
             SqlDataReader r = req.ExecuteReader();
+            int id;
 
             if (r.HasRows){
                 while(r.Read())
                 {
                     Babysitter bb = new Babysitter(r["nom"] as string, r["prenom"] as string, r["gsm"] as string, r["email"] as string, r["date_dispo"].ToString(), r["date_fin_dispo"].ToString());
-                    
+                    id = int.Parse(r["id"].ToString());
+                    bb.Id = id;
                     babyDispo.Add(bb);
                     
                 }

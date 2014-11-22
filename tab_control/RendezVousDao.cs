@@ -33,12 +33,28 @@ namespace tab_control
                     int idMembre = int.Parse(reader["id_membre"].ToString());
 
                     RendezVous rendezV = new RendezVous(reader["date_emission"].ToString(), reader["date_prevu"].ToString(), reader["date_fin"].ToString(), 0, idMembre);
+                    rendezV.Id = int.Parse(reader["id"].ToString());
                     list.Add(rendezV);
                 }
             }
             bdd.getConnection().Close();
             return list;
         }
+
+        public void demandeUpdate(int idBaby, int idDemande)
+        {
+            bdd.getConnection().Open();
+
+            SqlCommand req = new SqlCommand("UPDATE RendezVous SET id_babysitter = @id WHERE id = @idDem", bdd.getConnection());
+            req.Parameters.Add("@id", SqlDbType.Int).Value = idBaby;
+            req.Parameters.Add("@idDem", SqlDbType.Int).Value = idDemande;
+
+            req.ExecuteNonQuery();
+
+            bdd.getConnection().Close();
+        }
+
+        
     }
 }
 

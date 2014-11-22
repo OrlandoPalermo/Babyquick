@@ -23,7 +23,12 @@ namespace tab_control
     {
         private Intermediaire connectedMember;
         private int idParentPourRecherche;
+        private int idBaby;
+        private int idDemande;
         private ObservableCollection<Parent> parents;
+        private List<Babysitter> listDispo;
+        private ObservableCollection<RendezVous> listRendezVous;
+
         public MainWindow(Intermediaire inter)
         {
             
@@ -36,7 +41,7 @@ namespace tab_control
             RendezVousDao rDao = new RendezVousDao(bdd);
             UserDao uDao = new UserDao(bdd);
 
-            ObservableCollection<RendezVous> listRendezVous = rDao.read();
+            listRendezVous = rDao.read();
             parents = new ObservableCollection<Parent>();
             
             
@@ -57,7 +62,7 @@ namespace tab_control
 
                 Membre p = uDao.getMembre(r.IdParent);
                // Membre b = uDao.getMembre(r.IdBabysitter);
-
+                
                 row["Nom"] = p.Nom;
                 row["Prenom"] = p.Prenom;
                 row["Email"] = p.Email;
@@ -93,7 +98,9 @@ namespace tab_control
 
             String dateFin = ((DataRowView)requetes.SelectedItem).Row["Date de fin"].ToString();
 
-            List<Babysitter> listDispo = uD.getBabyDispo(dateDeb,dateFin);
+            listDispo = uD.getBabyDispo(dateDeb,dateFin);
+
+
 
             DBSearch.ItemsSource = listDispo;
 
@@ -106,11 +113,12 @@ namespace tab_control
             try
             {
                 idParentPourRecherche = parents.ElementAt(requetes.SelectedIndex).Id;
+                idDemande = listRendezVous.ElementAt(requetes.SelectedIndex).Id;
                 buttonRechercherB.IsEnabled = true;
 
             }
             catch (Exception E)
-            {
+            { 
                 buttonRechercherB.IsEnabled = false;
             }
         }
@@ -119,13 +127,23 @@ namespace tab_control
         {
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
-
+            RendezVousDao rdvDao = new RendezVousDao(bdd);
+            try
+            {
+                idBaby = listDispo.ElementAt(DBSearch.SelectedIndex).Id;
+                rdvDao.demandeUpdate(idBaby, idDemande);
+            }
+            catch (Exception E)
+            {
+                Notification.createNotification(new DataNotification("Veuillez sélectionner un élément avant, merci.", DataNotification.ERROR));
+            }
         }
 
         private void DBSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
+
         }
 
        /* private void searchCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
