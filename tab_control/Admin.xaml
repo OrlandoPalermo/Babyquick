@@ -124,8 +124,26 @@
             </TabItem>
             <TabItem Header="Chaîne de connexion">
                 <WrapPanel Orientation="Vertical">
-                    
-                    
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Adresse IP du serveur"></Label>
+                        <TextBlock Width="150" Name="ipServ"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Nom de la base de données"></Label>
+                        <TextBlock Width="150" Name="nomDB"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Nom de l'administrateur de la base de données"></Label>
+                        <TextBlock Width="150" Name="user"></TextBlock>
+                    </WrapPanel>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="Mot de passe de l'administrateur"></Label>
+                        <TextBlock Width="150" Name="passwdUser"></TextBlock>
+                    </WrapPanel>
+                    <Button Name="changeConnectionButton" Click="changeConnectionButton_Click" 
+                            Width="120" Height="30" 
+                            Background="Brown" Foreground="White">
+                    </Button>
                 </WrapPanel>
             </TabItem>
             <TabItem Width="240">

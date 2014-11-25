@@ -9,16 +9,20 @@ namespace tab_control
 {
 }
 
-namespace tab_control
+namespace tab_control.Classes
 {
     public class Bdd
     {
         private SqlConnection connexion;
         private static Bdd instance;
+        private Connect connect;
+
 
         private Bdd()
         {
-            connexion = new SqlConnection("Data Source=213.246.49.103;Initial Catalog=rlandliv46751be15249_babyquick;User ID=rland_admin;Password=helha!7946132536");
+            connect = new Connect();
+            connect.loadData();
+            connexion = new SqlConnection(connect.Connection);
         }
 
         public static Bdd getInstance()

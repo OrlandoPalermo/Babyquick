@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("whitecross.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("xml/xmlconnexion.xml")]
 
 

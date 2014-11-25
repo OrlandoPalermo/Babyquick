@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Connexion>
+	<connectBDD>
+		<ipServeur>213.246.49.103</ipServeur>
+		<nomDB>rlandliv46751be15249_babyquick</nomDB>
+		<user>rland_admin</user>
+		<passwdUser>helha!7946132536</passwdUser>
+	</connectBDD>
+</Connexion>

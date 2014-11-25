@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tab_control
+namespace tab_control.Classes
 {
     class RendezVousDao
     {
