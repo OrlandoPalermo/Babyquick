@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="tab_control.chaineConnexion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800">
+    
+    <WrapPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Width="500">
+        <Label Content="Changement de la chaîne de connexion"
+               FontSize="15"
+               FontWeight="Bold"></Label>
+        <Grid HorizontalAlignment="Center" Margin="0, 20, 0, 0" Width="500">
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Foreground" Value="Black"></Setter>
+                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                    <Setter Property="FontSize" Value="13"></Setter>
+                    <Setter Property="Margin" Value="0,0,10,10"></Setter>
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="0, 0, 0, 10"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            
+            <Label Content="Adresse IP du serveur" Grid.Column="0" Grid.Row="0"></Label>
+            <TextBox Width="150" Name="ipServ" Grid.Column="1" Grid.Row="0"></TextBox>
+
+
+            <Label Content="Nom de la base de données (BDD)" Grid.Column="0" Grid.Row="1"></Label>
+            <TextBox Width="150" Name="nomDB" Grid.Column="1" Grid.Row="1"></TextBox>
+
+            <Label Content="Nom de l'administrateur de la BDD" Grid.Column="0" Grid.Row="2"></Label>
+            <TextBox Width="150" Name="user" Grid.Column="1" Grid.Row="2"></TextBox>
+
+            <Label Content="Mot de passe de l'administrateur" Grid.Column="0" Grid.Row="3"></Label>
+            <TextBox Width="150" Name="passwdUser" Grid.Column="1" Grid.Row="3"></TextBox>   
+            
+        </Grid>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="testConnection" Click="testConnection_Click"
+                    Width="120" Height="30"
+                    Content="Ping"
+                    Background="Gainsboro"
+                    Margin="0,25,0,0"
+                    Foreground="DeepSkyBlue">
+            
+            </Button>
+            <Button x:Name="changeConnectionButton" Click="changeConnectionButton_Click"
+                    Width="120" Height="30" 
+                    Content="Valider"
+                    Background="Gainsboro"
+                    Margin="0,25,0,0"
+                    Foreground="DeepSkyBlue">
+            </Button>
+        </WrapPanel>
+    </WrapPanel>
+
+</UserControl>

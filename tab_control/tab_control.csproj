@@ -91,6 +91,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bdd.xsd</DependentUpon>
     </Compile>
+    <Compile Include="chaineConnexion.xaml.cs">
+      <DependentUpon>chaineConnexion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\AdminC.cs" />
     <Compile Include="Classes\Babysitter.cs" />
     <Compile Include="Classes\Connect.cs" />
@@ -98,6 +101,9 @@
     <Compile Include="Classes\Demande.cs" />
     <Compile Include="Classes\Intermediaire.cs" />
     <Compile Include="Classes\Parent.cs" />
+    <Compile Include="connectionChange.xaml.cs">
+      <DependentUpon>connectionChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Mail.xaml.cs">
       <DependentUpon>Mail.xaml</DependentUpon>
     </Compile>
@@ -125,6 +131,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="chaineConnexion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="connectionChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +238,9 @@
     <Resource Include="Xml\xmlConnexion.xml">
       <SubType>Designer</SubType>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Xml\XMLFile1.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -25,6 +25,8 @@ namespace tab_control.Classes
             connexion = new SqlConnection(connect.Connection);
         }
 
+        
+
         public static Bdd getInstance()
         {
             if (instance == null)

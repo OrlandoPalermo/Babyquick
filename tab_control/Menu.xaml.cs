@@ -19,7 +19,7 @@ namespace tab_control
     /// <summary>
     /// Logique d'interaction pour Menu.xaml
     /// </summary>
-    public partial class Menu : UserControl
+    public partial class Menu : UserControl 
     {
         public Menu()
         {
@@ -30,7 +30,7 @@ namespace tab_control
         {
             Window parent = Window.GetWindow(this);
             Window1 login = new Window1();
-            Bdd.getInstance().getConnection().Close();
+            tab_control.Classes.Bdd.getInstance().getConnection().Close();
             login.Show();
             Mail.clean();
             parent.Close();   
@@ -41,5 +41,14 @@ namespace tab_control
             AboutUs about = new AboutUs();
             about.Show();
         }
+
+        private void connexion_Click(object sender, RoutedEventArgs e)
+        {
+            connectionChange connect = new connectionChange();
+            connect.Show();
+            
+        }
+
+        
     }
 }

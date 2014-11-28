@@ -9,5 +9,6 @@
     <Menu>
         <MenuItem Header="A propos" Click="MenuItem_Click_1" ></MenuItem>
         <MenuItem Header="Se déconnecter" Click="MenuItem_Click"></MenuItem>
+        <MenuItem Header="Chaine de connexion" Name="connexion" Click="connexion_Click"></MenuItem>
     </Menu>
 </UserControl>

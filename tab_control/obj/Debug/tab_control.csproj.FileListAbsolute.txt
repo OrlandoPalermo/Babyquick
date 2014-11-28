@@ -203,3 +203,7 @@ D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Deskto
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
 D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\chaineConnexion.baml
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\chaineConnexion.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\connectionChange.g.cs
+D:\Users\Alexandre\Documents\Helha\InformatiqueGestion_3\Projet\BabyQuick_Desktop\Babyquick\tab_control\obj\Debug\connectionChange.baml

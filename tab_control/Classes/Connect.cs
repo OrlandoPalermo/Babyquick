@@ -41,10 +41,10 @@ namespace tab_control.Classes
             get { return passwdUser; }
             set { passwdUser = value; }
         }
-
+       
         public void loadData()
         {
-            XmlReader reader = XmlReader.Create("Xml\\xmlConnexion.xml");
+            XmlReader reader = XmlReader.Create("..\\..\\Xml\\XMLFile1.xml");
 
             while (reader.Read())
             {
@@ -64,6 +64,48 @@ namespace tab_control.Classes
                 }
             }
             connection = "Data Source=" + ipServeur + ";Initial Catalog=" + nomDB + ";User ID=" + user + ";Password=" + passwdUser;
+        }
+
+        public void updateData(string ip, string nomDB, string user, string passwdUser)
+        {
+            XmlDocument xmlDoc = new XmlDocument();
+
+
+            xmlDoc.Load("..\\..\\Xml\\XMLFile1.xml");
+
+            XmlNode racine = xmlDoc.DocumentElement;
+
+            foreach (XmlNode connexionBDD in racine.ChildNodes)
+            {
+                foreach (XmlNode node in connexionBDD.ChildNodes)
+                {
+                    switch (node.Name)
+                    {
+                        case "ipServeur":
+                            node.InnerText = ip;
+                            this.ipServeur = ip;
+                            break;
+
+                        case "nomDB": 
+                            node.InnerText = nomDB;
+                            this.nomDB = nomDB;
+                            break;
+
+                        case "user":
+                            node.InnerText = user;
+                            this.user = user;
+                            break;
+
+                        case "passwdUser":
+                            node.InnerText = passwdUser;
+                            this.passwdUser = passwdUser;
+                            break;
+                    }
+                }
+            }
+
+            xmlDoc.Save("..\\..\\Xml\\XMLFile1.xml");
+
         }
     }
 }

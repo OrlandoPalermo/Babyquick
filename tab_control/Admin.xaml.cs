@@ -28,6 +28,7 @@ namespace tab_control
         private ObservableCollection<Parent> parents;
         private ObservableCollection<Babysitter> babysitters;
         private ObservableCollection<Intermediaire> intermediaire;
+        
         private int fenetreActive;
 
         public Admin(AdminC admin)
@@ -39,6 +40,7 @@ namespace tab_control
             Bdd bdd = Bdd.getInstance();
             UserDao uD = new UserDao(bdd);
             UserControl1.ConnectedMember = admin;
+            
 
             
             List<Membre> membres = uD.findAll();
@@ -303,12 +305,6 @@ namespace tab_control
             this.BabysitterBDD.ItemsSource = babysitters;
         }
 
-        private void changeConnectionButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        
 
     }
 }
