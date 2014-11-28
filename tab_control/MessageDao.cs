@@ -1,4 +1,6 @@
-﻿using System;
+﻿using newBabyQuick.Classes;
+using newBabyQuick.DB;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -13,10 +15,12 @@ namespace tab_control
     class MessageDao
     {
         private Bdd bdd;
+        private NotificationLiveDao not;
 
         public MessageDao(Bdd b)
         {
             bdd = b;
+            not = new NotificationLiveDao(b);
         }
 
         public void add(Message m)
@@ -29,8 +33,9 @@ namespace tab_control
             req.Parameters.Add("@idRe", SqlDbType.Int).Value = m.IdReceveur;
 
             req.ExecuteNonQuery();
+            
             bdd.getConnection().Close();
-
+            not.add(new NotificationLive(m.IdReceveur, NotificationLive.MAIL));
         }
 
         public void delete(int idMessage)

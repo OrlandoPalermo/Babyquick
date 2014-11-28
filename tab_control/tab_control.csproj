@@ -100,6 +100,7 @@
     <Compile Include="Classes\DataNotification.cs" />
     <Compile Include="Classes\Demande.cs" />
     <Compile Include="Classes\Intermediaire.cs" />
+    <Compile Include="Classes\NotificationLive.cs" />
     <Compile Include="Classes\Parent.cs" />
     <Compile Include="connectionChange.xaml.cs">
       <DependentUpon>connectionChange.xaml</DependentUpon>
@@ -117,6 +118,7 @@
     <Compile Include="Notification.xaml.cs">
       <DependentUpon>Notification.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotificationLiveDao.cs" />
     <Compile Include="RendezVous.cs" />
     <Compile Include="RendezVousDao.cs" />
     <Compile Include="UserControl1.xaml.cs">
