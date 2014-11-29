@@ -119,13 +119,10 @@
 
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Mail" Width="240">
+            <TabItem Header="Mail" Width="340">
                 <userControl:Mail></userControl:Mail>
             </TabItem>
-            <TabItem Header="Chaîne de connexion" HorizontalAlignment="Center">
-                <userControl:chaineConnexion></userControl:chaineConnexion>
-            </TabItem>
-            <TabItem Width="240">
+            <TabItem Width="291">
                 <TabItem.Header>
                     <TextBlock Text="{Binding Path=Nom}" Name="headerIden"></TextBlock>
                 </TabItem.Header>

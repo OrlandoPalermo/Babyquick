@@ -27,8 +27,10 @@ namespace tab_control
         private Membre m;
         public Window1()
         {
+            
             InitializeComponent();
             email.Focus();
+            
         }
 
         /*

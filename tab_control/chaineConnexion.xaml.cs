@@ -30,7 +30,7 @@ namespace tab_control
             connect = new Connect();
             InitializeComponent();
             changeConnectionButton.IsEnabled = false;
-            testConnection.IsEnabled = false;
+            testConnection.IsEnabled = true;
         }
 
         private void changeConnectionButton_Click(object sender, RoutedEventArgs e)
@@ -38,11 +38,11 @@ namespace tab_control
             if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Text != "")
             {
                 connect.updateData(ipServ.Text, nomDB.Text, user.Text, passwdUser.Text);
-                Notification.createNotification(new DataNotification("Connexion à la base de données effectué, redémarrez le programme", DataNotification.SUCCESS));
+                MessageBox.Show("Connexion à la base de données effectué, redémarrez le programme");
             }
             else
             {
-                Notification.createNotification(new DataNotification("Veuillez compléter tous les champs, merci", DataNotification.ERROR));
+                MessageBox.Show("Veuillez compléter tous les champs");
             }
 
 
@@ -52,7 +52,7 @@ namespace tab_control
         {
             if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Text != "")
             {
-                testConnection.IsEnabled = true;
+             
                 connect.Connection = "Data Source=" + ipServ.Text + ";Initial Catalog=" + nomDB.Text + ";User ID=" + user.Text + ";Password=" + passwdUser.Text;
 
                 try

@@ -49,7 +49,7 @@
                     </DataGrid>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Requêtes" Width="242">
+            <TabItem Header="Demandes" Width="242">
                 <StackPanel HorizontalAlignment="Center">
                     <WrapPanel HorizontalAlignment="Center">
                         <Button Width="250" Background="Black" Foreground="Yellow" Padding="10" Content="Rechercher Babysitter" Click="ButtonRechercheBaby_Click" IsEnabled="False" Name="buttonRechercherB"></Button>

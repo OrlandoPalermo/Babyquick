@@ -195,7 +195,6 @@ H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Bab
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\GeneratedInternalTypeHelper.g.cs
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.cache
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control_MarkupCompile.lref
-H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.exe.config
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.exe
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\bin\Debug\tab_control.pdb
@@ -211,3 +210,4 @@ H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Bab
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.Properties.Resources.resources
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csproj.GenerateResource.Cache
 H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.exe
+H:\Google Drive\School\3- Third Year\Visual Studio 2013\Projects\tab_control\Babyquick\tab_control\obj\Debug\tab_control.csprojResolveAssemblyReference.cache

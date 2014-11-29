@@ -44,7 +44,7 @@ namespace tab_control.Classes
        
         public void loadData()
         {
-            XmlReader reader = XmlReader.Create("..\\..\\Xml\\XMLFile1.xml");
+            XmlReader reader = XmlReader.Create("..\\..\\Xml\\xmlConnexion.xml");
 
             while (reader.Read())
             {
@@ -58,7 +58,7 @@ namespace tab_control.Classes
                             break;
                         case "user": user = reader.ReadElementContentAsString();
                             break;
-                        case "passwdUser": passwdUser = reader.ReadElementContentAsString();
+                        case "passwdUser": passwdUser = Security.Decrypt(reader.ReadElementContentAsString());
                             break;
                     }
                 }
@@ -71,7 +71,7 @@ namespace tab_control.Classes
             XmlDocument xmlDoc = new XmlDocument();
 
 
-            xmlDoc.Load("..\\..\\Xml\\XMLFile1.xml");
+            xmlDoc.Load("..\\..\\Xml\\xmlConnexion.xml");
 
             XmlNode racine = xmlDoc.DocumentElement;
 
@@ -97,14 +97,14 @@ namespace tab_control.Classes
                             break;
 
                         case "passwdUser":
-                            node.InnerText = passwdUser;
+                            node.InnerText = Security.Encrypt(passwdUser);
                             this.passwdUser = passwdUser;
                             break;
                     }
                 }
             }
 
-            xmlDoc.Save("..\\..\\Xml\\XMLFile1.xml");
+            xmlDoc.Save("..\\..\\Xml\\xmlConnexion.xml");
 
         }
     }

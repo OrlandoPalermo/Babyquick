@@ -102,6 +102,7 @@
     <Compile Include="Classes\Intermediaire.cs" />
     <Compile Include="Classes\NotificationLive.cs" />
     <Compile Include="Classes\Parent.cs" />
+    <Compile Include="Classes\Security.cs" />
     <Compile Include="connectionChange.xaml.cs">
       <DependentUpon>connectionChange.xaml</DependentUpon>
     </Compile>
