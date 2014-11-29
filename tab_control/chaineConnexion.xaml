@@ -49,7 +49,7 @@
             <TextBox Width="150" Name="user" Grid.Column="1" Grid.Row="2"></TextBox>
 
             <Label Content="Mot de passe de l'administrateur" Grid.Column="0" Grid.Row="3"></Label>
-            <TextBox Width="150" Name="passwdUser" Grid.Column="1" Grid.Row="3"></TextBox>   
+            <PasswordBox Width="150" Name="passwdUser" Grid.Column="1" Grid.Row="3"></PasswordBox>   
             
         </Grid>
         <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">

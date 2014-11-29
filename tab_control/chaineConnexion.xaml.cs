@@ -35,9 +35,9 @@ namespace tab_control
 
         private void changeConnectionButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Text != "")
+            if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Password != "")
             {
-                connect.updateData(ipServ.Text, nomDB.Text, user.Text, passwdUser.Text);
+                connect.updateData(ipServ.Text, nomDB.Text, user.Text, passwdUser.Password);
                 MessageBox.Show("Connexion à la base de données effectué, redémarrez le programme");
             }
             else
@@ -50,10 +50,10 @@ namespace tab_control
 
         private void testConnection_Click(object sender, RoutedEventArgs e)
         {
-            if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Text != "")
+            if (ipServ.Text != "" && nomDB.Text != "" && user.Text != "" && passwdUser.Password != "")
             {
              
-                connect.Connection = "Data Source=" + ipServ.Text + ";Initial Catalog=" + nomDB.Text + ";User ID=" + user.Text + ";Password=" + passwdUser.Text;
+                connect.Connection = "Data Source=" + ipServ.Text + ";Initial Catalog=" + nomDB.Text + ";User ID=" + user.Text + ";Password=" + passwdUser.Password;
 
                 try
                 {
@@ -66,7 +66,7 @@ namespace tab_control
                     ipServ.Text = "";
                     nomDB.Text = "";
                     user.Text = "";
-                    passwdUser.Text = "";
+                    passwdUser.Password = "";
                 }
                 
             }
